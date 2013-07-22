@@ -1,0 +1,16 @@
+NIL
+NIL
+T
+T
+T
+T
+T
+T
+NIL
+NIL
+NIL
+NIL
+NIL
+T
+T
+T

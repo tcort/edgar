@@ -1,0 +1,111 @@
+.\" edgar - a small LISP Interpreter written in C
+.\" Copyright (c) 2013 Thomas Cort <linuxgeek@gmail.com>
+.\"
+.\" This program is free software: you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation, either version 3 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program.  If not, see <http://www.gnu.org/licenses/>.
+.TH EDGAR "1" "July 2013" "edgar 1.0" "User Commands"
+.SH NAME
+edgar \- a small LISP Interpreter written in C
+.SH SYNOPSIS
+.B edgar
+[\fIOPTION\fR] [\fIfilename\fR]
+.SH DESCRIPTION
+edgar implements a small subset of LISP in portable C. If the user specifies
+a filename on the command line or pipes data to edgar, the results will be
+written to standard out. If no file is specified, an interactive mode is
+started where a user can interact with the LISP system directly.
+.SH OPTIONS
+.TP
+\fB\-h\fR, \-?            \fB\-\-help\fR
+Print a helpful message and exit
+.TP
+\fB\-v\fR                \fB\-\-version\fR
+Print version information and exit
+.SH LANGUAGE REFERENCE
+.TP
+\fB(ATOM a)\fR
+Returns T if expression 'a' evaluates to an atom, otherwise NIL.
+.TP
+\fB(CAR l)\fR
+Return the first element of list 'l'.
+.TP
+\fB(CDR l)\fR
+Return all elements of list 'l' except for the first element.
+.TP
+\fB(COND (p1 e1) ... (pN eN))\fR
+Evaluate each 'p' until one evaluates to T. Return the evaluation of
+the corresponding 'e'. If no 'p' evaluates to true, NIL is returned.
+.TP
+\fB(CONS e1 e2)\fR
+Create a new list with a CAR of 'e1' and a CDR of 'e2'.
+.TP
+\fB(DEFUN f (args) (body))\fB
+Define a function named 'f' that accepts arguments 'args' and applies them 
+to 'body'.
+.TP
+\fB(EQUAL e1 e2)\fR
+Returns T if expression 'e1' evaluates to the evaluation of 
+expression 'e2'. Otherwise, NIL is returned.
+.TP
+\fB(GREATER i0 ... iN)\fR
+Return T if each integer is strictly greater than the previous, otherwise NIL.
+.TP
+\fB(INT i)\fR
+Returns T if expression 'i' evaluates to an integer, otherwise NIL.
+.TP
+\fB(LENGTH l)\fR
+Returns the count of the number of elements in list 'l'.
+.TP
+\fB(LESS i0 ... iN)\fR
+Return T if each integer is strictly less than the previous, otherwise NIL.
+.TP
+\fB(MINUS i0 ... iN)\fR
+Difference the value of integers i0 through iN and return the result.
+.TP
+\fB(NULL n)\fR
+Return T if expression 'n' evaluates to NIL, otherwise NIL.
+.TP
+\fB(PLUS i0 ... iN)\fR
+Sum the value of integers i0 through iN and return the result. If no
+operands are given, 0 is returned.
+.TP
+\fB(QUOTE e)\fR
+Return the expression 'e' exactly as it is, without evaluating it.
+.TP
+\fB(QUOTIENT i0 ... iN)\fR
+Divide 'i0' by 'i1', take the result and divide by 'i2', until 'iN'. Use two
+arguments for simple division. One argument for 1/i.
+.TP
+\fB(REMAINDER i0 i1)\fR
+Return the remainder of 'i0' divided by 'i1'.
+.TP
+\fB(SQRT i)\fR
+Returns the square root of integer 'i'. Accepts 1 integer argument only.
+.TP
+\fB(TIMES i0 ... iN)\fR
+Multiply the value of integers i0 through iN and return the result. If
+no operands are given, 1 is returned.
+.SH EXAMPLE PROGRAMS
+Some example programs are provided in the 'examples' directory of the
+source code distribution. They will be installed in the data directory
+as well. On most systems, this will be /usr/share/edgar/examples or
+/usr/local/share/edgar/examples or /usr/pkg/share/edgar/examples.
+.SH AUTHOR
+Written by Thomas Cort <linuxgeek@gmail.com>
+.SH "REPORTING BUGS"
+Report bugs to Thomas Cort <linuxgeek@gmail.com>
+.SH COPYRIGHT
+Copyright \(co 2013  Thomas Cort <linuxgeek@gmail.com>
+.br
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

@@ -1,0 +1,58 @@
+; edgar - a small LISP Interpreter written in C
+; Copyright (c) 2013 Thomas Cort <linuxgeek@gmail.com>
+;
+; This program is free software: you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation, either version 3 of the License, or
+; (at your option) any later version.
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+(DEFUN SQUARE (X) (TIMES X X))
+(SQUARE 3)
+(DEFUN INCR (X) (PLUS X 1))
+(INCR 1)
+(SQUARE (INCR 1))
+(INCR (SQUARE (INCR 1)))
+(DEFUN IS_FIVE (X) (COND ((EQUAL X 5) (QUOTE T)) ((QUOTE T) (QUOTE NIL))))
+(IS_FIVE 4)
+(IS_FIVE 5)
+(DEFUN SUM-SQR (X Y) (PLUS (SQUARE X) (SQUARE Y)))
+(SUM-SQR 3 4)
+(DEFUN LOOP (N) (COND ((EQUAL N 0) 0) ((QUOTE T) (LOOP (PLUS N -1)))))
+(LOOP 3)
+(DEFUN SUM-TO-N (N) (COND ((EQUAL N 0) 0) ((QUOTE T) (PLUS (SUM-TO-N (PLUS -1 N)) N))))
+(SUM-TO-N 3)
+(SUM-TO-N 100)
+(DEFUN FIB (N) (COND ((EQUAL N 1) 1) ((EQUAL N 0) 0) ((QUOTE T) (PLUS (FIB (PLUS N -1)) (FIB (PLUS N -2))))))
+(FIB 0)
+(FIB 1)
+(FIB 2)
+(FIB 3)
+(FIB 4)
+(FIB 5)
+(FIB 6)
+(FIB 7)
+(FIB 8)
+(FIB 9)
+(DEFUN FACT (N) (COND ((EQUAL N 1) 1) ((QUOTE T) (TIMES N (FACT (PLUS N -1))))))
+(FACT 1)
+(FACT 2)
+(FACT 3)
+(FACT 20)
+(FACT 100)
+(DEFUN SQR (X) (TIMES X X))
+(DEFUN SQR (X) (PLUS X X))
+(SQR 9)
+(DEFUN GAUSS (N) (QUOTIENT (TIMES N (PLUS N 1)) 2))
+(GAUSS 100)
+(DEFUN GCD (X Y) (COND ((EQUAL Y 0) X) (T (GCD Y (REMAINDER X Y)))))
+(GCD 100 625)
+(DEFUN DOUBLE (x) (TIMES x 2))
+(DOUBLE 3)
+(DOUBLE 7)
