@@ -66,6 +66,17 @@ if test "x$DIFF" = "x"; then
 	AC_MSG_NOTICE([diff is mandatory to run the tests])
 fi
 
+dnl
+dnl Check for valgrind (needed to run one test but not to compile)
+dnl
+AC_ARG_VAR([VALGRIND],[the 'valgrind' program to use for memory checking.])
+AC_PATH_PROG([VALGRIND],[valgrind],[])
+if test "x$VALGRIND" = "x"; then
+	AC_MSG_NOTICE([==> valgrind command not found! See http://valgrind.org/ ])
+	AC_MSG_NOTICE([==> Set VALGRIND variable if present in non-standard path!])
+	AC_MSG_NOTICE([Memory leak/error testing will be skipped.])
+fi
+
 dnl short name for older file systems that only support 8.3 filenames
 AC_CONFIG_HEADERS([config.h:config.in])
 

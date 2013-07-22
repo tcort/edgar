@@ -41,28 +41,29 @@ TESTS_ENVIRONMENT = \
 	EDGAR_IN_DIR=$(top_srcdir)/tests \
 	EDGAR_OUT_DIR=$(top_builddir)/tests \
 	EDGAR_EX_DIR=$(top_srcdir)/tests \
-	TEST_RUNNER=$(top_srcdir)/tests/test-runner.sh
+	TEST_RUNNER=$(top_srcdir)/tests/test-runner.sh \
+	VALGRIND=$(VALGRIND)
 
 CLEANFILES = \
-	atom.out \
-	car.out \
-	cdr.out \
-	cond.out \
-	cons.out \
-	defun.out \
-	equal.out \
-	greater.out \
-	int.out \
-	minus.out \
-	null.out \
-	length.out\
-	less.out \
-	plus.out \
-	quote.out \
-	quotient.out \
-	remainder.out \
-	sqrt.out \
-	times.out
+	atom.out	atom.out.stdout		atom.out.stderr		\
+	car.out		car.out.stdout		car.out.stderr		\
+	cdr.out		cdr.out.stdout		cdr.out.stderr		\
+	cond.out	cond.out.stdout		cond.out.stderr		\
+	cons.out 	cons.out.stdout		cons.out.stderr		\
+	defun.out	defun.out.stdout	defun.out.stderr	\
+	equal.out	equal.out.stdout	equal.out.stderr	\
+	greater.out	greater.out.stdout	greater.out.stderr	\
+	int.out		int.out.stdout		int.out.stderr		\
+	minus.out	minus.out.stdout	minus.out.stderr	\
+	null.out	null.out.stdout		null.out.stderr		\
+	length.out	length.out.stdout	length.out.stderr	\
+	less.out	less.out.stdout		less.out.stderr		\
+	plus.out	plus.out.stdout		plus.out.stderr		\
+	quote.out	quote.out.stdout	quote.out.stderr	\
+	quotient.out	quotient.out.stdout	quotient.out.stderr	\
+	remainder.out	remainder.out.stdout	remainder.out.stderr	\
+	sqrt.out	sqrt.out.stdout		sqrt.out.stderr		\
+	times.out	times.out.stdout	times.out.stderr
 
 EXTRA_DIST = test-runner.sh $(TESTS) \
 	atom.in atom.ex \

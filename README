@@ -11,31 +11,33 @@ Overview
 
 edgar is a small LISP Interpreter written in C.
 
-Build Dependencies
-==================
+Build Dependencies (i.e. dependencies needed to compile)
+========================================================
 
- - GNU MP http://gmplib.org/
-
+ - libgmp - GNU MP http://gmplib.org/
  - C toolchain: C compiler, linker, assembler, libc, etc.
- - diff(1) (only for running tests)
 
-Runtime Dependencies
-====================
+Check Dependencies (i.e. dependencies for running the test suite)
+=================================================================
 
- - GNU MP http://gmplib.org/
+ - libgmp - GNU MP http://gmplib.org/
+- diff
+- valgrind (optional) - http://valgrind.org/
 
- Building
- ========
+Runtime Dependencies (i.e. dependencies needed once installed)
+==============================================================
 
- Standard autotools build (`make check` runs the test suite):
+ - libgmp - GNU MP http://gmplib.org/
 
+Building
+========
+
+Standard autotools build (`make check` runs the test suite):
+
+	$ autoreconf -i
  	$ ./configure --prefix=/usr
 	$ make
 	$ make check
 	# make install
 
-Note: if you're building the sources directly out of git, you'll need autoconf
-and automake installed. Then, run this command to generate the configure
-script:
-
-	$ autoreconf -i
+Note: `autoreconf -i` is only needed if there is no configure script.

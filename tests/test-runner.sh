@@ -19,6 +19,30 @@ IN=${EDGAR_IN_DIR}/${1}.in
 OUT=${EDGAR_OUT_DIR}/${1}.out
 EX=${EDGAR_EX_DIR}/${1}.ex
 
+if test "x${DIFF}" = "x"; then
+	# no diff program, skipping test
+	exit 77
+fi
+
+if test "x${VALGRIND}" != "x"; then
+	${VALGRIND} --tool=memcheck --leak-check=yes ${EDGAR} ${IN} 1> ${OUT}.stdout 2> ${OUT}.stderr
+	grep -qs "All heap blocks were freed -- no leaks are possible" ${OUT}.stderr
+	RESULT=$?
+	if [ $RESULT -gt 0 ]
+	then
+		echo "Memory leak detected"
+		exit 1
+	fi
+
+	grep -qs "ERROR SUMMARY: 0 errors from 0 contexts" ${OUT}.stderr
+	RESULT=$?
+	if [ $RESULT -gt 0 ]
+	then
+		echo "Memory error detected"
+		exit 1
+	fi
+fi
+
 ${EDGAR} > ${OUT} < ${IN}
 ${DIFF} -u ${OUT} ${EX}
 
