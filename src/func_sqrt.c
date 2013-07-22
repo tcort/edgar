@@ -23,6 +23,7 @@
 #include <string.h>
 
 #include "func_sqrt.h"
+#include "number.h"
 #include "obj.h"
 
 obj_t * func_sqrt(obj_t *args, obj_t *env) {
@@ -44,10 +45,7 @@ obj_t * func_sqrt(obj_t *args, obj_t *env) {
 	}
 
 	op = strdup(ATOM(CAR(args)));
-	if (op[0] == '+') {
-		/* gmp doesn't like leading +, but 0 is OK */
-		op[0] = '0';
-	} else if (op[0] == '-') {
+	if (op[0] == '-') {
 		free(op);
 		fprintf(stdout, "SQRT: argument must be non-negative\n");
 		return alloc_fail();
@@ -64,5 +62,5 @@ obj_t * func_sqrt(obj_t *args, obj_t *env) {
 	s = mpz_get_str(NULL, 10, sqrtz);
 	mpz_clear(sqrtz);
 
-	return alloc_atom(s);
+	return number_filter(alloc_atom(s));
 }

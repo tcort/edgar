@@ -12,3 +12,7 @@ GREATER: expecting INT arguments.
 T
 T
 NIL
+NIL
+NIL
+NIL
+T

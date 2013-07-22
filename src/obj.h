@@ -48,7 +48,7 @@ typedef struct obj {
 #define ARGS(x) (x->val.defun.args)
 #define BODY(x) (x->val.defun.body)
 
-int is_int_obj(obj_t *o);
+#include "number.h"
 
 /* Simple type checking and utility functions */
 #define IS_LIST(x) (x != NULL && x->type == LIST)

@@ -39,6 +39,7 @@ edgar_SOURCES = \
 	func_sqrt.c		func_sqrt.h		\
 	func_times.c		func_times.h		\
 	main.c						\
+	number.c		number.h		\
 	obj.c			obj.h			\
 	parser.c		parser.h		\
 	scanner.c 		scanner.h

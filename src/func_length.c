@@ -21,6 +21,7 @@
 #include <stdio.h>
 
 #include "func_length.h"
+#include "number.h"
 #include "obj.h"
 
 obj_t * func_length(obj_t *args, obj_t *env) {
@@ -54,5 +55,5 @@ obj_t * func_length(obj_t *args, obj_t *env) {
 	mpz_clear(onez);
 	mpz_clear(lenz);
 
-	return alloc_atom(s);
+	return number_filter(alloc_atom(s));
 }

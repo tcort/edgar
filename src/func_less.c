@@ -51,10 +51,6 @@ obj_t * func_less(obj_t *args, obj_t *env) {
 		if (IS_INT(CAR(cur))) {
 
 			s = strdup(ATOM(CAR(cur)));
-			if (s[0] == '+') {
-				/* gmp doesn't like leading +, but 0 is OK */
-				s[0] = '0';
-			}
 
 			if (first) {
 				/* last not defined yet, (LESS 1) is always T */

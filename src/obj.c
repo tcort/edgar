@@ -143,40 +143,6 @@ void replace_obj(obj_t *replace, obj_t *with, obj_t *exp) {
 	}
 }
 
-int is_int_obj(obj_t *o) {
-
-	int i;
-	char *s;
-
-	if (o == NULL || !IS_ATOM(o)) {
-		return 0;
-	}
-
-	s = ATOM(o);
-	if (s[0] == '\0') {
-		return 0;
-	}
-
-	/* first byte can be sign or digit */
-	if (s[0] != '+' && s[0] != '-' && !isdigit(s[0])) {
-		return 0;
-	}
-
-	/* cannot have a lonely sign -- signs must be followed by a digit */
-	if ((s[0] == '+' || s[0] == '-') && !isdigit(s[1])) {
-		return 0;
-	}
-
-	/* rest of bytes must be digits */
-	for (i = 1; i < strlen(s); i++) {
-		if (!isdigit(s[i])) {
-			return 0;
-		}
-	}
-
-	return 1;
-}
-
 static void print_atom(obj_t *atom) {
 
 	assert(IS_ATOM(atom));

@@ -22,3 +22,7 @@
 (LESS (QUOTE A) (QUOTE B))
 (LESS 3 4 5)
 (LESS 6 4 80)
+(LESS +3 3)
+(LESS 3 +3)
+(LESS -3 +3)
+(LESS +3 -3)

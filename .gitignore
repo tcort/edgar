@@ -37,6 +37,7 @@ src/func_remainder.o
 src/func_sqrt.o
 src/func_times.o
 src/main.o
+src/number.o
 src/obj.o
 src/parser.o
 src/scanner.o

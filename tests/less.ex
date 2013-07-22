@@ -9,3 +9,7 @@ LESS: expecting INT arguments.
 #FAIL
 T
 NIL
+NIL
+NIL
+T
+NIL

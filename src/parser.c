@@ -20,6 +20,7 @@
 #include <stdlib.h>
 
 #include "obj.h"
+#include "number.h"
 #include "parser.h"
 #include "scanner.h"
 
@@ -42,7 +43,7 @@ static obj_t *parse_one(FILE *f, char *peeked) {
 		free(next);
 		return parse_list(f);
 	} else {
-		return alloc_atom(next);
+		return number_filter(alloc_atom(next));
 	}
 }
 

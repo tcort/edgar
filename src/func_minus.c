@@ -27,6 +27,7 @@
 #include "const.h"
 #include "func_length.h"
 #include "func_minus.h"
+#include "number.h"
 #include "obj.h"
 
 obj_t * func_minus(obj_t *args, obj_t *env) {
@@ -68,10 +69,6 @@ obj_t * func_minus(obj_t *args, obj_t *env) {
 
 		if (IS_INT(CAR(cur))) {
 			s = strdup(ATOM(CAR(cur)));
-			if (s[0] == '+') {
-				/* gmp doesn't like leading +, but 0 is OK */
-				s[0] = '0';
-			}
 			mpz_init_set_str(opz, s, 10);
 
 			if (first) {
@@ -84,7 +81,7 @@ obj_t * func_minus(obj_t *args, obj_t *env) {
 			free(s);
 		} else {
 			mpz_clear(diffz);
-			fprintf(stdout, "PLUS: expecting INT arguments.\n");
+			fprintf(stdout, "MINUS: expecting INT arguments.\n");
 			return alloc_fail();
 		}
 	}
@@ -92,5 +89,5 @@ obj_t * func_minus(obj_t *args, obj_t *env) {
 	s = mpz_get_str(NULL, 10, diffz);
 	mpz_clear(diffz);
 
-	return alloc_atom(s);
+	return number_filter(alloc_atom(s));
 }

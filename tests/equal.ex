@@ -10,3 +10,7 @@ EQUAL: expected 2 arguments
 T
 NIL
 T
+T
+T
+T
+T

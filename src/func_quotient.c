@@ -27,6 +27,7 @@
 #include "const.h"
 #include "func_length.h"
 #include "func_quotient.h"
+#include "number.h"
 #include "obj.h"
 
 obj_t * func_quotient(obj_t *args, obj_t *env) {
@@ -68,10 +69,6 @@ obj_t * func_quotient(obj_t *args, obj_t *env) {
 
 		if (IS_INT(CAR(cur))) {
 			s = strdup(ATOM(CAR(cur)));
-			if (s[0] == '+') {
-				/* gmp doesn't like leading +, but 0 is OK */
-				s[0] = '0';
-			}
 			mpz_init_set_str(opz, s, 10);
 
 			if (first && mpz_cmp_si(quotz, 0) != 0) {
@@ -99,5 +96,5 @@ obj_t * func_quotient(obj_t *args, obj_t *env) {
 	s = mpz_get_str(NULL, 10, quotz);
 	mpz_clear(quotz);
 
-	return alloc_atom(s);
+	return number_filter(alloc_atom(s));
 }

@@ -26,6 +26,7 @@
 
 #include "const.h"
 #include "func_remainder.h"
+#include "number.h"
 #include "obj.h"
 
 obj_t * func_remainder(obj_t *args, obj_t *env) {
@@ -50,17 +51,9 @@ obj_t * func_remainder(obj_t *args, obj_t *env) {
 	}
 
 	s1 = strdup(ATOM(CAR(args)));
-	if (s1[0] == '+') {
-		/* gmp doesn't like leading +, but 0 is OK */
-		s1[0] = '0';
-	}
 	mpz_init_set_str(op1z, s1, 10);
 
 	s2 = strdup(ATOM(CADR(args)));
-	if (s2[0] == '+') {
-		/* gmp doesn't like leading +, but 0 is OK */
-		s2[0] = '0';
-	}
 	mpz_init_set_str(op2z, s2, 10);
 
 	if (mpz_cmp_si(op2z, 0) == 0) {
@@ -84,5 +77,5 @@ obj_t * func_remainder(obj_t *args, obj_t *env) {
 	s =  mpz_get_str(NULL, 10, result);
 	mpz_clear(result);
 
-	return alloc_atom(s);
+	return number_filter(alloc_atom(s));
 }
