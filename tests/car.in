@@ -17,3 +17,5 @@
 (CAR (QUOTE (A B)) (QUOTE (A B)))
 (CAR)
 (CAR T)
+(CAR (QUOTE (A B)))
+(CAR (QUOTE ((A B))))

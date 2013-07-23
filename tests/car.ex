@@ -5,3 +5,5 @@ CAR: expected argument list
 #FAIL
 CAR: expected list argument
 #FAIL
+A
+(A B)

@@ -18,3 +18,5 @@
 (CDR)
 (CDR T)
 (CDR (QUOTE (A)))
+(CDR (QUOTE (A B)))
+(CDR (QUOTE ((A B))))

@@ -6,3 +6,5 @@ CDR: expected argument list
 CDR: expected list argument
 #FAIL
 NIL
+(B)
+NIL
