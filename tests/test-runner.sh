@@ -43,7 +43,8 @@ if test "x${VALGRIND}" != "x"; then
 	fi
 fi
 
-${EDGAR} > ${OUT} < ${IN}
+${WINE} ${EDGAR} > ${OUT} < ${IN}
+sed -i -e 's/\r$//' ${OUT}
 ${DIFF} -u ${OUT} ${EX}
 
 RESULT=$?

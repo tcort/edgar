@@ -66,15 +66,32 @@ if test "x$DIFF" = "x"; then
 	AC_MSG_NOTICE([diff is mandatory to run the tests])
 fi
 
-dnl
-dnl Check for valgrind (needed to run one test but not to compile)
-dnl
-AC_ARG_VAR([VALGRIND],[the 'valgrind' program to use for memory checking.])
-AC_PATH_PROG([VALGRIND],[valgrind],[])
-if test "x$VALGRIND" = "x"; then
-	AC_MSG_NOTICE([==> valgrind command not found! See http://valgrind.org/ ])
-	AC_MSG_NOTICE([==> Set VALGRIND variable if present in non-standard path!])
-	AC_MSG_NOTICE([Memory leak/error testing will be skipped.])
+if test $cross_compiling = yes; then
+	case "$host" in
+		*-*-mingw* | *-*-cygwin)
+			dnl
+			dnl Check for wine
+			dnl
+			AC_ARG_VAR([WINE],[the 'wine' program for running mingw/cygwin executables.])
+			AC_PATH_PROG([WINE],['wine'],[])
+			if test "x$WINE" = "x"; then
+				AC_MSG_NOTICE([==> wine command not found! see http://www.winehq.org/])
+				AC_MSG_NOTICE([==> Set WINE variable if present in non-standard path!])
+				AC_MSG_NOTICE([Tests will probably not work without wine.])
+			fi
+		;;
+	esac
+else
+	dnl
+	dnl Check for valgrind (needed to run memory tests but not to run functional tests)
+	dnl
+	AC_ARG_VAR([VALGRIND],[the 'valgrind' program to use for memory checking.])
+	AC_PATH_PROG([VALGRIND],[valgrind],[])
+	if test "x$VALGRIND" = "x"; then
+		AC_MSG_NOTICE([==> valgrind command not found! See http://valgrind.org/ ])
+		AC_MSG_NOTICE([==> Set VALGRIND variable if present in non-standard path!])
+		AC_MSG_NOTICE([Memory leak/error testing will be skipped.])
+	fi
 fi
 
 dnl short name for older file systems that only support 8.3 filenames
