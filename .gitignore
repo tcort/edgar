@@ -31,7 +31,6 @@ src/func_greater.o
 src/func_int.o
 src/func_minus.o
 src/func_null.o
-src/func_length.o
 src/func_less.o
 src/func_plus.o
 src/func_quotient.o

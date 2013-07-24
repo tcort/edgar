@@ -3,7 +3,6 @@
 3
 5
 3
-LENGTH: expected list argument
 MINUS: expected argument list
 #FAIL
 3

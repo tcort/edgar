@@ -30,7 +30,6 @@ edgar_SOURCES = \
 	func_equal.c		func_equal.h		\
 	func_greater.c		func_greater.h		\
 	func_int.c		func_int.h		\
-	func_length.c		func_length.h		\
 	func_less.c		func_less.h		\
 	func_minus.c		func_minus.h		\
 	func_null.c		func_null.h		\

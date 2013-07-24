@@ -32,7 +32,6 @@
 #include "func_int.h"
 #include "func_minus.h"
 #include "func_null.h"
-#include "func_length.h"
 #include "func_less.h"
 #include "func_plus.h"
 #include "func_quotient.h"

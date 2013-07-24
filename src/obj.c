@@ -457,3 +457,20 @@ void free_obj(obj_t *o) {
 		free_defunc(o);
 	}
 }
+
+unsigned long list_length(obj_t *o) {
+
+	obj_t *cur;
+	unsigned long length;
+
+	length = 0;
+	if (!IS_LIST(o)) {
+		return length;;
+	}
+
+	for (cur = o; IS_LIST(cur); cur = CDR(cur)) {
+		length++;
+	}
+
+	return length;
+}

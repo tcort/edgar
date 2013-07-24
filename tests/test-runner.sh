@@ -51,7 +51,7 @@ if test "x${VALGRIND}" != "x"; then
 fi
 
 cat ${IN} | ${WINE} ${EDGAR} ${ARGS} | sed -e 's/\r$//' > ${OUT}
-${DIFF} -u ${OUT} ${EX}
+${DIFF} -u ${EX} ${OUT}
 
 RESULT=$?
 if [ $RESULT -gt 0 ]

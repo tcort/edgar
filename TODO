@@ -3,4 +3,3 @@
  * Move more functions into lib/edgar.lisp
  	- NULL
 	- SQRT (wait for decimal arithmetic)
- * Come up with a function for argument checking.

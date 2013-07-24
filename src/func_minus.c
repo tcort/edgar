@@ -25,43 +25,31 @@
 #include <stdlib.h>
 
 #include "const.h"
-#include "func_length.h"
 #include "func_minus.h"
 #include "number.h"
 #include "obj.h"
 
 obj_t * func_minus(obj_t *args, obj_t *env) {
 
-	mpz_t lenz;
 	mpz_t diffz;
 	mpz_t opz;
 	char *s;
 	int first;
+	unsigned long length;
 
 	obj_t *cur;
-	obj_t *len;
-	obj_t *lenargs;
 
 	first = 1;
 
 	/* get list length */
-	lenargs = alloc_list(clone_obj(args), alloc_nil());
-	len = func_length(lenargs, env);
-	mpz_init_set_str(lenz, ATOM(len), 10);
-	free_obj(len);
-	free_obj(lenargs);
+	length = list_length(args);
 
-	if (mpz_cmp_si(lenz, 0) == 0) {
-
+	if (length == 0) {
 		fprintf(stdout, "MINUS: expected argument list\n");
-		mpz_clear(lenz);
-	
 		return alloc_fail();
-	} else if (mpz_cmp_si(lenz, 1) == 0) {
+	} else if (length == 1) {
 		first = 0;
 	}
-
-	mpz_clear(lenz);
 
 	mpz_init_set_str(diffz, "0", 10);
 

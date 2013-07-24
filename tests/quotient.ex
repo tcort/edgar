@@ -6,7 +6,6 @@ QUOTIENT: Divide by 0 Error.
 3
 QUOTIENT: Divide by 0 Error.
 #FAIL
-LENGTH: expected list argument
 QUOTIENT: expected argument list
 #FAIL
 7
