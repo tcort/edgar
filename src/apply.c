@@ -45,9 +45,13 @@ obj_t * apply(obj_t *args, obj_t *env) {
 		func_args = ARGS(CAR(CAR(args)));
 		call_args = CDR(args);
 
+		/*
+		if (IS_LIST(call_args)) {
+*/
+
 		/* ((<DEFUNC:[args=(X)][body=(TIMES X X)]>) 3) */
 
-		do {
+		while (IS_LIST(func_args) && IS_LIST(call_args)) {
 			func_arg = CAR(func_args);
 			call_arg = CAR(call_args);
 
@@ -55,8 +59,7 @@ obj_t * apply(obj_t *args, obj_t *env) {
 
 			func_args = CDR(func_args);
 			call_args = CDR(call_args);
-
-		} while (IS_LIST(func_args) && IS_LIST(call_args));
+		}
 
 		if ((IS_LIST(func_args) && !IS_LIST(call_args)) ||
 				(!IS_LIST(func_args) && IS_LIST(call_args))) {
@@ -64,6 +67,8 @@ obj_t * apply(obj_t *args, obj_t *env) {
 			fprintf(stdout, "Unexpected number of arguments\n");
 			return alloc_fail();
 		}
+
+
 
 		result = eval(body, env);
 

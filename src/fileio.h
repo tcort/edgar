@@ -16,21 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __ENV_H
-#define __ENV_H
+#ifndef __FILEIO_H
+#define __FILEIO_H
 
 #include "obj.h"
 
-obj_t * alloc_env(void);
-obj_t * clone_env(obj_t *env);
-void insert_env(obj_t *env, obj_t *o);
-obj_t * query_env(obj_t *env, obj_t *o);
-void free_env(obj_t *env);
-void print_env(obj_t *env);
-void print_func_names(obj_t *env);
-void print_defunc_names(obj_t *env);
+int load_file(char *filename, obj_t * env);
 
-void add_func_to_env(char *name, obj_t * (*func)(obj_t *, obj_t *), obj_t *env);
-void add_def_to_env(char *name, obj_t *exp, obj_t *env);
-
-#endif /* __ENV_H */
+#endif /* __FILEIO_H */

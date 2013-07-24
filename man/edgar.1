@@ -29,7 +29,10 @@ started where a user can interact with the LISP system directly.
 \fB\-h\fR, \-?            \fB\-\-help\fR
 Print a helpful message and exit
 .TP
-\fB\-v\fR                \fB\-\-version\fR
+\fB-l file.lisp\fR        \fB\-\-lib file.lisp\fR
+Loads the specified lisp file into the environment upon start-up.
+.TP
+\fB\-v\fR                 \fB\-\-version\fR
 Print version information and exit
 .SH LANGUAGE REFERENCE
 .TP
@@ -62,9 +65,6 @@ Return T if each integer is strictly greater than the previous, otherwise NIL.
 .TP
 \fB(INT i)\fR
 Returns T if expression 'i' evaluates to an integer, otherwise NIL.
-.TP
-\fB(LENGTH l)\fR
-Returns the count of the number of elements in list 'l'.
 .TP
 \fB(LESS i0 ... iN)\fR
 Return T if each integer is strictly less than the previous, otherwise NIL.

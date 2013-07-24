@@ -89,7 +89,6 @@ obj_t * alloc_env(void) {
 	add_func_to_env("NULL", func_null, env);
 	add_func_to_env("INT", func_int, env);
 	add_func_to_env("COND", func_cond, env);
-	add_func_to_env("LENGTH", func_length, env);
 	add_func_to_env("SQRT", func_sqrt, env);
 	add_func_to_env("PLUS", func_plus, env);
 	add_func_to_env("MINUS", func_minus, env);
@@ -160,15 +159,14 @@ void print_func_names(obj_t *env) {
 		key = CAR(item);
 		value = CDR(item);
 
-		if (i > 32) {
-			fprintf(stdout, "\n");
-			i = 0;
-		} else {
-			fprintf(stdout, " ");
-			i += 1;
-		}
-
 		if (IS_ATOM(key) && IS_FUNC(CAR(value))) {
+			if (i > 32) {
+				fprintf(stdout, "\n");
+				i = 0;
+			} else {
+				fprintf(stdout, " ");
+				i += 1;
+			}
 			fprintf(stdout, "%s", ATOM(key));
 			i += strlen(ATOM(key));
 		}
@@ -177,6 +175,49 @@ void print_func_names(obj_t *env) {
 	}
 	fprintf(stdout, "\n");
 }
+
+void print_defunc_names(obj_t *env) {
+
+	int i;
+	int first;
+	obj_t *cur;
+
+	obj_t *item;
+	obj_t *key;
+	obj_t *value;
+
+	assert(IS_LIST(env));
+
+	cur = env;
+
+	i = 0; first = 1;
+	fprintf(stdout, "Library Functions:\n");
+	while (IS_LIST(cur) && IS_LIST(CAR(cur))) {
+
+		item = CAR(cur);
+		key = CAR(item);
+		value = CDR(item);
+
+		if (IS_ATOM(key) && IS_DEFUNC(CAR(value))) {
+			if (i > 32) {
+				fprintf(stdout, "\n");
+				i = 0;
+			} else if (!first) {
+				fprintf(stdout, " ");
+				i += 1;
+			} else {
+				first = 0;
+			}
+			fprintf(stdout, "%s", ATOM(key));
+			i += strlen(ATOM(key));
+		}
+
+		cur = CDR(cur);
+	}
+	fprintf(stdout, "\n");
+}
+
+
 
 void free_env(obj_t *env) {
 	free_obj(env);

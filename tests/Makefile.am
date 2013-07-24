@@ -15,29 +15,30 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 TESTS = \
-	atom.sh \
-	car.sh \
-	cdr.sh \
-	cond.sh \
-	cons.sh \
-	defun.sh \
-	equal.sh \
-	greater.sh \
-	int.sh \
-	minus.sh \
-	null.sh \
-	length.sh \
-	less.sh \
-	plus.sh \
-	quote.sh \
-	quotient.sh \
-	remainder.sh \
-	sqrt.sh
+	atom.sh		\
+	car.sh		\
+	cdr.sh		\
+	cond.sh		\
+	cons.sh		\
+	defun.sh	\
+	equal.sh	\
+	greater.sh	\
+	int.sh		\
+	minus.sh	\
+	null.sh		\
+	less.sh		\
+	libedgar.sh	\
+	plus.sh		\
+	quote.sh	\
+	quotient.sh	\
+	remainder.sh	\
+	sqrt.sh		\
 	times.sh
 
 TESTS_ENVIRONMENT = \
 	DIFF=$(DIFF)						\
 	EDGAR=$(top_builddir)/src/edgar				\
+	EDGAR_LIB_DIR=$(top_srcdir)/lib				\
 	EDGAR_IN_DIR=$(top_srcdir)/tests			\
 	EDGAR_OUT_DIR=$(top_builddir)/tests			\
 	EDGAR_EX_DIR=$(top_srcdir)/tests			\
@@ -57,8 +58,8 @@ CLEANFILES = \
 	int.out		int.out.stdout		int.out.stderr		\
 	minus.out	minus.out.stdout	minus.out.stderr	\
 	null.out	null.out.stdout		null.out.stderr		\
-	length.out	length.out.stdout	length.out.stderr	\
 	less.out	less.out.stdout		less.out.stderr		\
+	libedgar.out	libedgar.out.stdout	libedgar.out.stderr	\
 	plus.out	plus.out.stdout		plus.out.stderr		\
 	quote.out	quote.out.stdout	quote.out.stderr	\
 	quotient.out	quotient.out.stdout	quotient.out.stderr	\
@@ -66,23 +67,23 @@ CLEANFILES = \
 	sqrt.out	sqrt.out.stdout		sqrt.out.stderr		\
 	times.out	times.out.stdout	times.out.stderr
 
-EXTRA_DIST = test-runner.sh $(TESTS)	\
-	atom.in atom.ex			\
-	car.in car.ex			\
-	cdr.in cdr.ex			\
-	cons.in cons.ex			\
-	cond.in cond.ex			\
-	defun.in defun.ex		\
-	equal.in equal.ex		\
-	greater.in greater.ex		\
-	int.in int.ex			\
-	minus.in minus.ex		\
-	null.in null.ex			\
-	length.in length.ex		\
-	less.in less.ex			\
-	plus.in plus.ex			\
-	quote.in quote.ex		\
-	quotient.in quotient.ex		\
-	remainder.in remainder.ex	\
-	sqrt.in sqrt.ex			\
-	times.in times.ex
+EXTRA_DIST = test-runner.sh $(TESTS)		\
+	atom.in		atom.ex			\
+	car.in		car.ex			\
+	cdr.in		cdr.ex			\
+	cons.in		cons.ex			\
+	cond.in		cond.ex			\
+	defun.in	defun.ex		\
+	equal.in	equal.ex		\
+	greater.in	greater.ex		\
+	int.in		int.ex			\
+	minus.in	minus.ex		\
+	null.in		null.ex			\
+	less.in		less.ex			\
+	libedgar.in	libedgar.ex		\
+	plus.in		plus.ex			\
+	quote.in	quote.ex		\
+	quotient.in	quotient.ex		\
+	remainder.in	remainder.ex		\
+	sqrt.in		sqrt.ex			\
+	times.in	times.ex

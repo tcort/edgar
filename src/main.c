@@ -29,29 +29,14 @@
 #include "const.h"
 #include "env.h"
 #include "eval.h"
+#include "fileio.h"
 #include "obj.h"
 #include "parser.h"
+#include "repl.h"
 
-static int is_interfactive(FILE *f);
 static void splash(obj_t * env);
 static void print_help(char *progname);
 static void print_version (void);
-
-/*
- * Determine if the session is interactive (i.e. user at a tty) or if
- * we're reading from a file or pipe. This is used to determine if a
- * prompt should be displayed.
- */
-static int is_interfactive(FILE *f) {
-	int fd;
-
-	fd = fileno(f);
-	if (fd == -1) {
-		return 0;
-	}
-
-	return isatty(fd);
-}
 
 static void splash(obj_t * env) {
 	fprintf(stdout, "            _                    \n");
@@ -75,6 +60,7 @@ void print_help(char *progname) {
 	fprintf(stdout, "\n");
 	fprintf(stdout, "Options:\n");
 	fprintf(stdout, " -h, -?            --help                  Print a helpful message and exit\n");
+	fprintf(stdout, " -l file.lisp      --lib file.lisp         Load a library\n");
 	fprintf(stdout, " -v                --version               Print version information and exit\n");
 	fprintf(stdout, "\n");
 	fprintf(stdout, "Report bugs to %s\n", PACKAGE_BUGREPORT);
@@ -102,16 +88,20 @@ int main(int argc, char *argv[]) {
 
 	FILE *f;
 	int optc;
-	obj_t *in, *out, *env;
+	char *lib;
+	obj_t *env;
 
-	const char* const short_options = "h?v";
+	const char* const short_options = "h?l:v";
 #if HAVE_GETOPT_LONG
 	static const struct option long_options[] = {
 		{"help", no_argument, NULL, 'h'},
+		{"lib", required_argument, NULL, 'l'},
 		{"version", no_argument, NULL, 'v'},
 		{NULL, 0, NULL, 0}
 	};
 #endif
+
+	lib = NULL;
 
 #if HAVE_GETOPT_LONG
 	while ((optc = getopt_long(argc, argv, short_options, long_options, NULL)) != -1) {
@@ -121,6 +111,9 @@ int main(int argc, char *argv[]) {
 		switch (optc) {
 			case 'v':
 				print_version();
+				break;
+			case 'l':
+				lib = optarg;
 				break;
 			case 'h':
 			case '?':
@@ -149,30 +142,16 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
+	if (lib != NULL) {
 
-	do {
+		load_file(lib, env);
 		if (is_interfactive(f)) {
-			fprintf(stdout, "%s", REPL_PROMPT);
-			fflush(stdout);
+			print_defunc_names(env);
+			fprintf(stdout, "\n");
 		}
+	}
 
-		/* read */
-		in = parse(f);
-		if (feof(f)) {
-			free_obj(in);
-			break;
-		}
-
-		/* eval */
-		out = eval(in, env);
-		free_obj(in);
-
-		/* print */
-		print_obj(out);
-		free_obj(out);
-
-		/* loop */
-	} while (!feof(f));
+	repl(f, env, 0);
 
 	fclose(f);
 

@@ -21,6 +21,7 @@ edgar_SOURCES = \
 				const.h			\
 	env.c			env.h			\
 	eval.c			eval.h			\
+	fileio.c		fileio.h		\
 	func_atom.c		func_atom.h		\
 	func_car.c		func_car.h		\
 	func_cdr.c		func_cdr.h		\
@@ -42,4 +43,5 @@ edgar_SOURCES = \
 	number.c		number.h		\
 	obj.c			obj.h			\
 	parser.c		parser.h		\
+	repl.c			repl.h			\
 	scanner.c 		scanner.h

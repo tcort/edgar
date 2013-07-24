@@ -56,3 +56,5 @@
 (DEFUN DOUBLE (x) (TIMES x 2))
 (DOUBLE 3)
 (DOUBLE 7)
+(DEFUN TPT () (PLUS 2 2))
+(TPT)

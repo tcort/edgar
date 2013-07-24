@@ -18,10 +18,17 @@
 IN=${EDGAR_IN_DIR}/${1}.in
 OUT=${EDGAR_OUT_DIR}/${1}.out
 EX=${EDGAR_EX_DIR}/${1}.ex
+LIBEDGAR=${EDGAR_LIB_DIR}/edgar.lisp
 
 if test "x${DIFF}" = "x"; then
 	# no diff program, skipping test
 	exit 77
+fi
+
+if test "x${1}" = "xlibedgar"; then
+ARGS="-l ${LIBEDGAR}"
+else
+ARGS=""
 fi
 
 if test "x${VALGRIND}" != "x"; then
@@ -43,7 +50,7 @@ if test "x${VALGRIND}" != "x"; then
 	fi
 fi
 
-cat ${IN} | ${WINE} ${EDGAR} | sed -e 's/\r$//' > ${OUT}
+cat ${IN} | ${WINE} ${EDGAR} ${ARGS} | sed -e 's/\r$//' > ${OUT}
 ${DIFF} -u ${OUT} ${EX}
 
 RESULT=$?

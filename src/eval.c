@@ -77,8 +77,8 @@ obj_t * eval(obj_t * exp, obj_t *env) {
 			name = CAR(cur);
 			cur = CDR(cur);
 
-			if (!IS_LIST(cur) || !IS_LIST(CAR(cur))) {
-				fprintf(stdout, "DEFUN: 3rd argument should be parameter list\n");
+			if (!IS_LIST(cur) || !(IS_LIST(CAR(cur)) || IS_NIL(CAR(cur)))) {
+				fprintf(stdout, "DEFUN: 3rd argument should be parameter list or NIL\n");
 				return alloc_fail();
 			}
 			args = CAR(cur);

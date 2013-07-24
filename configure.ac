@@ -97,7 +97,7 @@ fi
 dnl short name for older file systems that only support 8.3 filenames
 AC_CONFIG_HEADERS([config.h:config.in])
 
-AC_CONFIG_FILES([Makefile examples/Makefile man/Makefile src/Makefile tests/Makefile])
+AC_CONFIG_FILES([Makefile examples/Makefile lib/Makefile man/Makefile src/Makefile tests/Makefile])
 
 AC_OUTPUT
 

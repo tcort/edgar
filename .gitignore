@@ -20,6 +20,7 @@ src/apply.o
 src/edgar
 src/env.o
 src/eval.o
+src/fileio.o
 src/func_atom.o
 src/func_car.o
 src/func_cdr.o
@@ -41,6 +42,7 @@ src/main.o
 src/number.o
 src/obj.o
 src/parser.o
+src/repl.o
 src/scanner.o
 stamp-h1
 tests/*.out
