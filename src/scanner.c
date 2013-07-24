@@ -67,6 +67,7 @@ char *scanner_next_token(FILE *f) {
 							buf[pos] == '\r' ||
 							buf[pos] == '\t' ||
 							buf[pos] == '\v' ||
+							buf[pos] == ';'  ||
 							buf[pos] == '('  ||
 							buf[pos] ==')') {
 

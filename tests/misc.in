@@ -7,4 +7,11 @@
 		((EQUAL X 0) Y)
 		(T (PLUS 1 (MYADD (MINUS X 1) Y)))))
 (SETQ FIVE (MYADD TWO THREE))
-(PLUS FIVE FIVE)
+(MYADD FIVE FIVE)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(PLUS 2 2);;;;;;;
+(PLUS;;;;;;;
+2;2)
+3;;;;;;;;;;;;
+);;;;;;;;;
+(PLUS 4 4)
