@@ -19,12 +19,13 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "func_equal.h"
+#include "env.h"
+#include "func_setq.h"
 #include "obj.h"
 
-obj_t * func_equal(obj_t *args, obj_t *env) {
+obj_t * func_setq(obj_t *args, obj_t *env) {
 
-	obj_t * result;
+	int r;
 
 	if (!IS_LIST(args)) {
 		fprintf(stdout, "EQUAL: expected argument list\n");
@@ -34,7 +35,11 @@ obj_t * func_equal(obj_t *args, obj_t *env) {
 		return alloc_fail();
 	}
 
-	result = compare_obj(CAR(args), CADR(args));
+	r = add_to_env(CAR(args), CAR(CDR(args)), env);
 
-	return result;
+	if (r == 0) {
+		return clone_obj(CAR(args));
+	} else {
+		return alloc_fail();
+	}
 }

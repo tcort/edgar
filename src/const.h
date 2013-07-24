@@ -19,7 +19,7 @@
 #ifndef __CONST_H
 #define __CONST_H
 
-#define REPL_PROMPT "edgar> "
+#define REPL_PROMPT "> "
 #define MAX_ATOM_LEN 1024
 
 #endif /* __CONST_H */

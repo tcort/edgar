@@ -1,0 +1,7 @@
+21
+(A B C)
+TWO
+THREE
+T
+FIVE
+10

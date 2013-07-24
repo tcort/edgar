@@ -36,23 +36,35 @@
 #include "func_plus.h"
 #include "func_quotient.h"
 #include "func_remainder.h"
+#include "func_setq.h"
 #include "func_sqrt.h"
 #include "func_times.h"
 
 #include "env.h"
 #include "obj.h"
 
+int add_to_env(obj_t *key, obj_t *value, obj_t *env) {
+
+	int r;
+	obj_t *item;
+
+	item = alloc_list(clone_obj(key), clone_obj(value));
+	r = insert_env(env, item);
+	free_obj(item);
+
+	return r;
+}
+
 void add_func_to_env(char *name, obj_t * (*func)(obj_t *, obj_t *), obj_t *env) {
 
-	obj_t *item;
 	obj_t *key;
 	obj_t *value;
 
 	key = alloc_atom(strdup(name));
-	value = alloc_func(func);
-	item = alloc_list(key, alloc_list(value, alloc_nil()));
-	insert_env(env, item);
-	free_obj(item);
+	value = alloc_list(alloc_func(func), alloc_nil());
+	add_to_env(key, value, env);
+	free_obj(key);
+	free_obj(value);
 
 	return;
 }
@@ -64,10 +76,10 @@ void add_def_to_env(char *name, obj_t *exp, obj_t *env) {
 	obj_t *value;
 
 	key = alloc_atom(strdup(name));
-	value = clone_obj(exp);
-	item = alloc_list(key, value);
-	insert_env(env, item);
-	free_obj(item);
+	value = alloc_list(clone_obj(exp), alloc_nil());
+	add_to_env(key, value, env);
+	free_obj(key);
+	free_obj(value);
 
 	return;
 }
@@ -78,6 +90,7 @@ obj_t * alloc_env(void) {
 
 	env = alloc_list(alloc_fail(), alloc_nil());
 
+	add_func_to_env("SETQ", func_setq, env);
 	add_func_to_env("CAR", func_car, env);
 	add_func_to_env("CDR", func_cdr, env);
 	add_func_to_env("CONS", func_cons, env);
@@ -102,8 +115,32 @@ obj_t * clone_env(obj_t *env) {
 	return clone_obj(env);
 }
 
-void insert_env(obj_t *env, obj_t *o) {
+int insert_env(obj_t *env, obj_t *o) {
+
+	int is_duplicate;
+	obj_t * query_target;
+	obj_t * query_result;
+	obj_t * compare_result;
+
+	is_duplicate = 0;
+	query_target = clone_obj(CAR(o));
+	query_result = query_env(env, query_target);
+	compare_result = compare_obj(query_target, query_result);
+	if (!IS_T(compare_result)) {
+		is_duplicate = 1;
+	}
+	free_obj(query_target);
+	free_obj(query_result);
+	free_obj(compare_result);
+
+	if (is_duplicate) {
+		fprintf(stdout, "Definition for %s already exists\n", ATOM(CAR(o)));
+		return -1;
+	}
+
 	append_obj(env, o);
+
+	return 0;
 }
 
 obj_t * query_env(obj_t *env, obj_t *o) {
@@ -215,8 +252,6 @@ void print_defunc_names(obj_t *env) {
 	}
 	fprintf(stdout, "\n");
 }
-
-
 
 void free_env(obj_t *env) {
 	free_obj(env);

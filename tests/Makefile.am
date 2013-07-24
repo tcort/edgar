@@ -25,6 +25,7 @@ TESTS = \
 	greater.sh	\
 	int.sh		\
 	minus.sh	\
+	misc.sh		\
 	null.sh		\
 	less.sh		\
 	libedgar.sh	\
@@ -32,6 +33,7 @@ TESTS = \
 	quote.sh	\
 	quotient.sh	\
 	remainder.sh	\
+	setq.sh		\
 	sqrt.sh		\
 	times.sh
 
@@ -57,6 +59,7 @@ CLEANFILES = \
 	greater.out	greater.out.stdout	greater.out.stderr	\
 	int.out		int.out.stdout		int.out.stderr		\
 	minus.out	minus.out.stdout	minus.out.stderr	\
+	misc.out	misc.out.stdout		misc.out.stderr		\
 	null.out	null.out.stdout		null.out.stderr		\
 	less.out	less.out.stdout		less.out.stderr		\
 	libedgar.out	libedgar.out.stdout	libedgar.out.stderr	\
@@ -64,6 +67,7 @@ CLEANFILES = \
 	quote.out	quote.out.stdout	quote.out.stderr	\
 	quotient.out	quotient.out.stdout	quotient.out.stderr	\
 	remainder.out	remainder.out.stdout	remainder.out.stderr	\
+	setq.out	setq.out.stdout		setq.out.stderr		\
 	sqrt.out	sqrt.out.stdout		sqrt.out.stderr		\
 	times.out	times.out.stdout	times.out.stderr
 
@@ -78,6 +82,7 @@ EXTRA_DIST = test-runner.sh $(TESTS)		\
 	greater.in	greater.ex		\
 	int.in		int.ex			\
 	minus.in	minus.ex		\
+	misc.in		misc.ex			\
 	null.in		null.ex			\
 	less.in		less.ex			\
 	libedgar.in	libedgar.ex		\
@@ -85,5 +90,6 @@ EXTRA_DIST = test-runner.sh $(TESTS)		\
 	quote.in	quote.ex		\
 	quotient.in	quotient.ex		\
 	remainder.in	remainder.ex		\
+	setq.in		setq.ex			\
 	sqrt.in		sqrt.ex			\
 	times.in	times.ex

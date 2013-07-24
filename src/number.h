@@ -22,5 +22,6 @@
 #include "obj.h"
 
 obj_t * number_filter(obj_t * o);
+int is_int_obj(obj_t *o);
 
 #endif /* __NUMBER_H */

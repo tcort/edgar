@@ -18,8 +18,9 @@
 
 #include <stdio.h>
 
-#include "obj.h"
 #include "fileio.h"
+#include "obj.h"
+#include "repl.h"
 
 int load_file(char *filename, obj_t * env) {
 

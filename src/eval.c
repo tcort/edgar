@@ -22,6 +22,7 @@
 
 #include "apply.h"
 #include "func_cond.h"
+#include "func_setq.h"
 #include "env.h"
 #include "eval.h"
 #include "obj.h"
@@ -39,8 +40,23 @@ obj_t * eval(obj_t * exp, obj_t *env) {
 
 	if (IS_ATOM(exp)) {
 
-		return query_env(env, exp);
+		int diff;
+		obj_t *q;
+		obj_t *cmp;
 
+		q = query_env(env, exp);
+		cmp = compare_obj(q, exp);
+		diff = !IS_T(cmp);
+		free_obj(cmp);
+
+		if (diff) {
+			obj_t *result;
+			result = eval(q, env);
+			free_obj(q);
+			return result;
+		} else {
+			return q;
+		}
 	} else if (IS_LIST(exp)) {
 
 		/* QUOTE is special, we don't eval() the args */
@@ -54,6 +70,7 @@ obj_t * eval(obj_t * exp, obj_t *env) {
 		/* Same with DEFUN, we don't eval() the args (yet) */
 		} else if (strcmp(ATOM(CAR(exp)), "DEFUN") == 0) {
 
+			int insert_r;
 			obj_t *cur;
 			obj_t *key;
 			obj_t *item;
@@ -61,12 +78,6 @@ obj_t * eval(obj_t * exp, obj_t *env) {
 			obj_t *name;
 			obj_t *args;
 			obj_t *body;
-
-			int is_duplicate;
-			obj_t *query_target;
-			obj_t *query_result;
-			obj_t *compare_result;
-			is_duplicate = 0;
 
 			cur = CDR(exp);
 
@@ -90,33 +101,21 @@ obj_t * eval(obj_t * exp, obj_t *env) {
 			}
 			body = CAR(cur);
 
-			query_target = alloc_atom(strdup(ATOM(name)));
-			query_result = query_env(env, query_target);
-			
-			compare_result = compare_obj(query_target, query_result);
-
-			if (!IS_T(compare_result)) {
-				is_duplicate = 1;
-			}
-
-			free_obj(query_target);
-			free_obj(query_result);
-			free_obj(compare_result);
-
-			if (is_duplicate) {
-				fprintf(stdout, "Definition for %s already exists\n", ATOM(name));
-				return alloc_fail();
-			}
-
 			key = clone_obj(name);
 			value = alloc_defunc(strdup(ATOM(name)), clone_obj(args), clone_obj(body));
 			item = alloc_list(key, alloc_list(value, alloc_nil()));
-			insert_env(env, item);
+			insert_r = insert_env(env, item);
 			free_obj(item);
 
-			return alloc_t();
+			if (insert_r == 0) {
+				return alloc_t();
+			} else {
+				return alloc_fail();
+			}
 		} else if (strcmp(ATOM(CAR(exp)), "COND") == 0) {
 			return func_cond(CDR(exp), env);
+		} else if (strcmp(ATOM(CAR(exp)), "SETQ") == 0) {
+			return func_setq(CDR(exp), env);
 		}
 
 		/* Check if expression is a DEFUNC */

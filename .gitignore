@@ -35,6 +35,7 @@ src/func_less.o
 src/func_plus.o
 src/func_quotient.o
 src/func_remainder.o
+src/func_setq.o
 src/func_sqrt.o
 src/func_times.o
 src/main.o
