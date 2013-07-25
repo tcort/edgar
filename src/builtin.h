@@ -16,11 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __FUNC_COND_H
-#define __FUNC_COND_H
+#ifndef __BUILTIN_H
+#define __BUILTIN_H
 
 #include "obj.h"
 
+obj_t * func_atom(obj_t *args, obj_t *env);
+obj_t * func_car(obj_t *args, obj_t *env);
+obj_t * func_cdr(obj_t *args, obj_t *env);
 obj_t * func_cond(obj_t *args, obj_t *env);
+obj_t * func_cons(obj_t *args, obj_t *env);
+obj_t * func_equal(obj_t *args, obj_t *env);
+obj_t * func_greater(obj_t *args, obj_t *env);
+obj_t * func_int(obj_t *args, obj_t *env);
+obj_t * func_less(obj_t *args, obj_t *env);
+obj_t * func_minus(obj_t *args, obj_t *env);
+obj_t * func_plus(obj_t *args, obj_t *env);
+obj_t * func_quotient(obj_t *args, obj_t *env);
+obj_t * func_remainder(obj_t *args, obj_t *env);
+obj_t * func_setq(obj_t *args, obj_t *env);
+obj_t * func_times(obj_t *args, obj_t *env);
 
-#endif /* __FUNC_COND_H */
+#endif /* __BUILTIN_H */

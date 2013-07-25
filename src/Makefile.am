@@ -22,21 +22,7 @@ edgar_SOURCES = \
 	env.c			env.h			\
 	eval.c			eval.h			\
 	fileio.c		fileio.h		\
-	func_atom.c		func_atom.h		\
-	func_car.c		func_car.h		\
-	func_cdr.c		func_cdr.h		\
-	func_cond.c		func_cond.h		\
-	func_cons.c		func_cons.h		\
-	func_equal.c		func_equal.h		\
-	func_greater.c		func_greater.h		\
-	func_int.c		func_int.h		\
-	func_less.c		func_less.h		\
-	func_minus.c		func_minus.h		\
-	func_plus.c		func_plus.h		\
-	func_quotient.c		func_quotient.h		\
-	func_remainder.c	func_remainder.h	\
-	func_setq.c		func_setq.h		\
-	func_times.c		func_times.h		\
+	builtin.c		builtin.h		\
 	main.c						\
 	number.c		number.h		\
 	obj.c			obj.h			\

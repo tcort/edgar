@@ -21,8 +21,7 @@
 #include <stdio.h>
 
 #include "apply.h"
-#include "func_cond.h"
-#include "func_setq.h"
+#include "builtin.h"
 #include "env.h"
 #include "eval.h"
 #include "obj.h"

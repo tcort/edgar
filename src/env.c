@@ -22,22 +22,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "func_atom.h"
-#include "func_car.h"
-#include "func_cdr.h"
-#include "func_cons.h"
-#include "func_cond.h"
-#include "func_equal.h"
-#include "func_greater.h"
-#include "func_int.h"
-#include "func_minus.h"
-#include "func_less.h"
-#include "func_plus.h"
-#include "func_quotient.h"
-#include "func_remainder.h"
-#include "func_setq.h"
-#include "func_times.h"
-
+#include "builtin.h"
 #include "env.h"
 #include "obj.h"
 
