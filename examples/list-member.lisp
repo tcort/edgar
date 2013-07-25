@@ -20,7 +20,7 @@
 ; Return T if NEEDLE is in HAYSTACK, otherwise return NIL
 (DEFUN LIST-MEMBER (NEEDLE HAYSTACK)
        (COND
-	 	((NULL HAYSTACK)
+	 	((EQUAL NIL HAYSTACK)
 	  		NIL)
 		((EQUAL NEEDLE (CAR HAYSTACK))
 		 	T)

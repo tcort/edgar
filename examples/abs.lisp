@@ -20,7 +20,7 @@
 (DEFUN ABS (X)
        (COND
 	 	((LESS X 0)
-	  		(MINUS X))
+	  		(MINUS 0 X))
 		(T
 		 	X)))
 

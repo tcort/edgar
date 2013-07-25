@@ -18,7 +18,6 @@
 
 #define _BSD_SOURCE
 
-#include <assert.h>
 #include <gmp.h>
 #include <stdio.h>
 #include <string.h>
@@ -31,36 +30,10 @@
 
 obj_t * func_times(obj_t *args, obj_t *env) {
 
-	mpz_t prodz;
-	mpz_t opz;
-	char *s;
-
-	obj_t *cur;
-
-	if (!IS_LIST(args)) {
-		/* no arguments should return 1 */
-		return alloc_atom(strdup("1"));
+	if (list_length(args) != 2) {
+		fprintf(stdout, "TIMES: expected 2 arguments\n");
+		return alloc_fail();
 	}
 
-	mpz_init_set_str(prodz, "1", 10);
-
-	for (cur = args; IS_LIST(cur); cur = CDR(cur)) {
-
-		if (IS_INT(CAR(cur))) {
-			s = strdup(ATOM(CAR(cur)));
-			mpz_init_set_str(opz, s, 10);
-			mpz_mul(prodz, prodz, opz);
-			mpz_clear(opz);
-			free(s);
-		} else {
-			mpz_clear(prodz);
-			fprintf(stdout, "TIMES: expecting INT arguments.\n");
-			return alloc_fail();
-		}
-	}
-
-	s = mpz_get_str(NULL, 10, prodz);
-	mpz_clear(prodz);
-
-	return number_filter(alloc_atom(s));
+	return times(CAR(args), CADR(args));
 }

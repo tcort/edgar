@@ -24,14 +24,10 @@
 
 obj_t * func_equal(obj_t *args, obj_t *env) {
 
-	obj_t * result;
-
 	if (list_length(args) != 2) {
 		fprintf(stdout, "EQUAL: expected 2 arguments\n");
 		return alloc_fail();
 	}
 
-	result = compare_obj(CAR(args), CADR(args));
-
-	return result;
+	return compare_obj(CAR(args), CADR(args));
 }

@@ -17,8 +17,10 @@
  */
 
 #include <ctype.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <gmp.h>
 
 #include "number.h"
 #include "obj.h"
@@ -86,4 +88,67 @@ int is_int_obj(obj_t *o) {
 	return 1;
 }
 
+static obj_t * int_op(obj_t *op1, obj_t *op2, void (*op)(mpz_t rop, const mpz_t op1, const mpz_t op2), char *op_name) {
 
+	mpz_t op1z;
+	mpz_t op2z;
+	mpz_t rz;
+	char *s1;
+	char *s2;
+	char *sr;
+	obj_t *result;
+
+	if (!IS_INT(op1) || !IS_INT(op2)) {
+		fprintf(stdout, "%s: expecting INT arguments.\n", op_name);
+		return alloc_fail();
+	}
+	
+	s1 = strdup(ATOM(op1));
+	s2 = strdup(ATOM(op2));
+
+	mpz_init_set_str(op1z, s1, 10);
+	mpz_init_set_str(op2z, s2, 10);
+	mpz_init_set_str(rz, "0", 10);
+
+	(*op)(rz, op1z, op2z);
+	sr = mpz_get_str(NULL, 10, rz);
+
+	result = number_filter(alloc_atom(sr));
+
+	mpz_clear(op1z);
+	mpz_clear(op2z);
+	mpz_clear(rz);
+
+	free(s1);
+	free(s2);
+
+	return result;
+}
+
+obj_t * plus(obj_t *op1, obj_t *op2) {
+	return int_op(op1, op2, mpz_add, "PLUS");
+}
+
+obj_t * minus(obj_t *op1, obj_t *op2) {
+	return int_op(op1, op2, mpz_sub, "MINUS");
+}
+
+obj_t * times(obj_t *op1, obj_t *op2) {
+	return int_op(op1, op2, mpz_mul, "TIMES");
+}
+
+obj_t * quotient(obj_t *op1, obj_t *op2) {
+	if (IS_ATOM(op2) && strcmp(ATOM(op2), "0") == 0) {
+		fprintf(stdout, "QUOTIENT: Divide by 0 Error.\n");
+		return alloc_fail();
+	}
+	return int_op(op1, op2, mpz_cdiv_q, "QUOTIENT");
+}
+
+obj_t * edgar_remainder(obj_t *op1, obj_t *op2) {
+	if (IS_ATOM(op2) && strcmp(ATOM(op2), "0") == 0) {
+		fprintf(stdout, "REMAINDER: Divide by 0 Error.\n");
+		return alloc_fail();
+	}
+	return int_op(op1, op2, mpz_mod, "REMAINDER");
+}

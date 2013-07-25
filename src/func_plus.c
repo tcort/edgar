@@ -18,7 +18,6 @@
 
 #define _BSD_SOURCE
 
-#include <assert.h>
 #include <gmp.h>
 #include <stdio.h>
 #include <string.h>
@@ -31,36 +30,10 @@
 
 obj_t * func_plus(obj_t *args, obj_t *env) {
 
-	mpz_t sumz;
-	mpz_t opz;
-	char *s;
-
-	obj_t *cur;
-
-	if (!IS_LIST(args)) {
-		/* no arguments should return 0 */
-		return alloc_atom(strdup("0"));
+	if (list_length(args) != 2) {
+		fprintf(stdout, "PLUS: expected 2 arguments\n");
+		return alloc_fail();
 	}
 
-	mpz_init_set_str(sumz, "0", 10);
-
-	for (cur = args; IS_LIST(cur); cur = CDR(cur)) {
-
-		if (IS_INT(CAR(cur))) {
-			s = strdup(ATOM(CAR(cur)));
-			mpz_init_set_str(opz, s, 10);
-			mpz_add(sumz, sumz, opz);
-			mpz_clear(opz);
-			free(s);
-		} else {
-			mpz_clear(sumz);
-			fprintf(stdout, "PLUS: expecting INT arguments.\n");
-			return alloc_fail();
-		}
-	}
-
-	s = mpz_get_str(NULL, 10, sumz);
-	mpz_clear(sumz);
-
-	return number_filter(alloc_atom(s));
+	return plus(CAR(args), CADR(args));
 }

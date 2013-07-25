@@ -33,7 +33,7 @@
 ; ABS - Absolute Value Function
 (DEFUN ABS (X)
        (COND
-	 	((LESS X 0) (MINUS X))
+	 	((LESS X 0) (MINUS 0 X))
 		(T X)))
 
 

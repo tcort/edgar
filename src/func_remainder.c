@@ -31,50 +31,10 @@
 
 obj_t * func_remainder(obj_t *args, obj_t *env) {
 
-	int r;
-	mpz_t op1z;
-	mpz_t op2z;
-	mpz_t result;
-	char *s, *s1, *s2;
-
-	obj_t *cur;
-
 	if (list_length(args) != 2) {
 		fprintf(stdout, "REMAINDER: expected 2 arguments\n");
 		return alloc_fail();
 	}
 
-	if (!IS_INT(CAR(args)) && !IS_INT(CADR(args))) {
-		fprintf(stdout, "REMAINDER: arguments must be INTs.\n");
-		return alloc_fail();
-	}
-
-	s1 = strdup(ATOM(CAR(args)));
-	mpz_init_set_str(op1z, s1, 10);
-
-	s2 = strdup(ATOM(CADR(args)));
-	mpz_init_set_str(op2z, s2, 10);
-
-	if (mpz_cmp_si(op2z, 0) == 0) {
-		mpz_clear(op1z);
-		mpz_clear(op2z);
-		free(s1);
-		free(s2);
-		fprintf(stdout, "REMAINDER: Divide by 0 Error.\n");
-		return alloc_fail();
-	}
-
-	mpz_init(result);
-	mpz_mod(result, op1z, op2z);
-
-	mpz_clear(op1z);
-	mpz_clear(op2z);
-
-	free(s1);
-	free(s2);
-
-	s =  mpz_get_str(NULL, 10, result);
-	mpz_clear(result);
-
-	return number_filter(alloc_atom(s));
+	return edgar_remainder(CAR(args), CADR(args));
 }

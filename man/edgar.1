@@ -69,30 +69,27 @@ Returns T if expression 'i' evaluates to an integer, otherwise NIL.
 \fB(LESS i0 ... iN)\fR
 Return T if each integer is strictly less than the previous, otherwise NIL.
 .TP
-\fB(MINUS i0 ... iN)\fR
-Difference the value of integers i0 through iN and return the result.
+\fB(MINUS i1 i2)\fR
+Difference the value of integers i1 and i2, and return the result.
 .TP
-\fB(PLUS i0 ... iN)\fR
-Sum the value of integers i0 through iN and return the result. If no
-operands are given, 0 is returned.
+\fB(PLUS i1 i2)\fR
+Sum the value of integers i1 and i2, and return the result.
 .TP
 \fB(QUOTE e)\fR
 Return the expression 'e' exactly as it is, without evaluating it.
 .TP
-\fB(QUOTIENT i0 ... iN)\fR
-Divide 'i0' by 'i1', take the result and divide by 'i2', until 'iN'. Use two
-arguments for simple division. One argument for 1/i.
+\fB(QUOTIENT i1 i2)\fR
+Divide 'i1' by 'i2', and return the result.
 .TP
-\fB(REMAINDER i0 i1)\fR
-Return the remainder of 'i0' divided by 'i1'.
+\fB(REMAINDER i1 i2)\fR
+Return the remainder of 'i1' divided by 'i2'.
 .TO
 \fB(SETQ a v)\fR
 Assign value 'v' to atom 'a'. After calling this function, 'a' will evaluate
 to 'v'.
 .TP
-\fB(TIMES i0 ... iN)\fR
-Multiply the value of integers i0 through iN and return the result. If
-no operands are given, 1 is returned.
+\fB(TIMES i1 i2)\fR
+Multiply the value of integers i1 and i2, and return the result.
 .SH EXAMPLE PROGRAMS
 Some example programs are provided in the 'examples' directory of the
 source code distribution. They will be installed in the data directory

@@ -1,11 +1,15 @@
 20
-2
-1
-QUOTIENT: Divide by 0 Error.
+QUOTIENT: expected 2 arguments
+#FAIL
+QUOTIENT: expected 2 arguments
+#FAIL
+QUOTIENT: expected 2 arguments
 #FAIL
 3
 QUOTIENT: Divide by 0 Error.
 #FAIL
-QUOTIENT: expected argument list
+QUOTIENT: expected 2 arguments
 #FAIL
 7
+1
+0

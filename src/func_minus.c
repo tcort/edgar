@@ -18,7 +18,6 @@
 
 #define _BSD_SOURCE
 
-#include <assert.h>
 #include <gmp.h>
 #include <stdio.h>
 #include <string.h>
@@ -31,51 +30,10 @@
 
 obj_t * func_minus(obj_t *args, obj_t *env) {
 
-	mpz_t diffz;
-	mpz_t opz;
-	char *s;
-	int first;
-	unsigned long length;
-
-	obj_t *cur;
-
-	first = 1;
-
-	/* get list length */
-	length = list_length(args);
-
-	if (length == 0) {
-		fprintf(stdout, "MINUS: expected argument list\n");
+	if (list_length(args) != 2) {
+		fprintf(stdout, "MINUS: expected 2 arguments\n");
 		return alloc_fail();
-	} else if (length == 1) {
-		first = 0;
 	}
 
-	mpz_init_set_str(diffz, "0", 10);
-
-	for (cur = args; IS_LIST(cur); cur = CDR(cur)) {
-
-		if (IS_INT(CAR(cur))) {
-			s = strdup(ATOM(CAR(cur)));
-			mpz_init_set_str(opz, s, 10);
-
-			if (first) {
-				mpz_sub(diffz, opz, diffz);
-				first = 0;
-			} else {
-				mpz_sub(diffz, diffz, opz);
-			}
-			mpz_clear(opz);
-			free(s);
-		} else {
-			mpz_clear(diffz);
-			fprintf(stdout, "MINUS: expecting INT arguments.\n");
-			return alloc_fail();
-		}
-	}
-
-	s = mpz_get_str(NULL, 10, diffz);
-	mpz_clear(diffz);
-
-	return number_filter(alloc_atom(s));
+	return minus(CAR(args), CADR(args));
 }
