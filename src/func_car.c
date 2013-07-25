@@ -24,14 +24,13 @@
 
 obj_t * func_car(obj_t *args, obj_t *env) {
 
-	if (!IS_LIST(args)) {
-		fprintf(stdout, "CAR: expected argument list\n");
-		return alloc_fail();
-	} else if (!IS_LIST(CAR(args))) {
-		fprintf(stdout, "CAR: expected list argument\n");
-		return alloc_fail();
-	} else if (!IS_NIL(CDR(args))) {
+	if (list_length(args) != 1) {
 		fprintf(stdout, "CAR: expected 1 argument\n");
+		return alloc_fail();
+	}
+
+	if (!IS_LIST(CAR(args))) {
+		fprintf(stdout, "CAR: expected list argument\n");
 		return alloc_fail();
 	}
 

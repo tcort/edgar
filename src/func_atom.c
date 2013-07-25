@@ -24,10 +24,7 @@
 
 obj_t * func_atom(obj_t *args, obj_t *env) {
 
-	if (!IS_LIST(args)) {
-		fprintf(stdout, "ATOM: expected argument list\n");
-		return alloc_fail();
-	} else if (!IS_NIL(CDR(args))) {
+	if (list_length(args) != 1) {
 		fprintf(stdout, "ATOM: expected 1 argument\n");
 		return alloc_fail();
 	}

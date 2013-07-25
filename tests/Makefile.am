@@ -33,7 +33,6 @@ TESTS = \
 	quotient.sh	\
 	remainder.sh	\
 	setq.sh		\
-	sqrt.sh		\
 	times.sh
 
 TESTS_ENVIRONMENT = \
@@ -66,7 +65,6 @@ CLEANFILES = \
 	quotient.out	quotient.out.stdout	quotient.out.stderr	\
 	remainder.out	remainder.out.stdout	remainder.out.stderr	\
 	setq.out	setq.out.stdout		setq.out.stderr		\
-	sqrt.out	sqrt.out.stdout		sqrt.out.stderr		\
 	times.out	times.out.stdout	times.out.stderr
 
 EXTRA_DIST = test-runner.sh $(TESTS)		\
@@ -88,5 +86,4 @@ EXTRA_DIST = test-runner.sh $(TESTS)		\
 	quotient.in	quotient.ex		\
 	remainder.in	remainder.ex		\
 	setq.in		setq.ex			\
-	sqrt.in		sqrt.ex			\
 	times.in	times.ex

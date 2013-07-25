@@ -24,14 +24,13 @@
 
 obj_t * func_cdr(obj_t *args, obj_t *env) {
 
-	if (!IS_LIST(args)) {
-		fprintf(stdout, "CDR: expected argument list\n");
-		return alloc_fail();
-	} else if (!IS_LIST(CAR(args))) {
-		fprintf(stdout, "CDR: expected list argument\n");
-		return alloc_fail();
-	} else if (!IS_NIL(CDR(args))) {
+	if (list_length(args) != 1) {
 		fprintf(stdout, "CDR: expected 1 argument\n");
+		return alloc_fail();
+	}
+
+	if (!IS_LIST(CAR(args))) {
+		fprintf(stdout, "CDR: expected list argument\n");
 		return alloc_fail();
 	}
 

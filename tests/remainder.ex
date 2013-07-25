@@ -5,7 +5,7 @@ REMAINDER: Divide by 0 Error.
 #FAIL
 REMAINDER: expected 2 arguments
 #FAIL
-REMAINDER: expected argument list
+REMAINDER: expected 2 arguments
 #FAIL
 0
 0

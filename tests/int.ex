@@ -14,3 +14,7 @@ NIL
 T
 T
 T
+INT: expected 1 argument
+#FAIL
+INT: expected 1 argument
+#FAIL

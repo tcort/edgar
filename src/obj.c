@@ -465,7 +465,7 @@ unsigned long list_length(obj_t *o) {
 
 	length = 0;
 	if (!IS_LIST(o)) {
-		return length;;
+		return length;
 	}
 
 	for (cur = o; IS_LIST(cur); cur = CDR(cur)) {

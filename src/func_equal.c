@@ -26,10 +26,7 @@ obj_t * func_equal(obj_t *args, obj_t *env) {
 
 	obj_t * result;
 
-	if (!IS_LIST(args)) {
-		fprintf(stdout, "EQUAL: expected argument list\n");
-		return alloc_fail();
-	} else if (!IS_LIST(CDR(args)) || !IS_NIL(CDR(CDR(args)))) {
+	if (list_length(args) != 2) {
 		fprintf(stdout, "EQUAL: expected 2 arguments\n");
 		return alloc_fail();
 	}

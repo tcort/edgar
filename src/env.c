@@ -36,7 +36,6 @@
 #include "func_quotient.h"
 #include "func_remainder.h"
 #include "func_setq.h"
-#include "func_sqrt.h"
 #include "func_times.h"
 
 #include "env.h"
@@ -99,7 +98,6 @@ obj_t * alloc_env(void) {
 	add_func_to_env("ATOM", func_atom, env);
 	add_func_to_env("INT", func_int, env);
 	add_func_to_env("COND", func_cond, env);
-	add_func_to_env("SQRT", func_sqrt, env);
 	add_func_to_env("PLUS", func_plus, env);
 	add_func_to_env("MINUS", func_minus, env);
 	add_func_to_env("TIMES", func_times, env);

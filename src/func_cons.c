@@ -26,14 +26,13 @@ obj_t * func_cons(obj_t *args, obj_t *env) {
 
 	obj_t *x, *y;
 
-	if (!IS_LIST(args)) {
-		fprintf(stdout, "CONS: expected argument list\n");
-		return alloc_fail();
-	} else if (IS_NIL(CADR(args)) || !IS_LIST(CADR(args))) {
-		fprintf(stdout, "CONS: expected 2nd argument to be a list\n");
-		return alloc_fail();
-	} else if (!IS_NIL(CDR(CDR(args)))) {
+	if (list_length(args) != 2) {
 		fprintf(stdout, "CONS: expected 2 arguments\n");
+		return alloc_fail();
+	}
+	
+	if (IS_NIL(CADR(args)) || !IS_LIST(CADR(args))) {
+		fprintf(stdout, "CONS: expected 2nd argument to be a list\n");
 		return alloc_fail();
 	}
 

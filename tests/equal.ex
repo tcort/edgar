@@ -1,7 +1,7 @@
 T
 NIL
 T
-EQUAL: expected argument list
+EQUAL: expected 2 arguments
 #FAIL
 EQUAL: expected 2 arguments
 #FAIL

@@ -1,7 +1,7 @@
 A
 CAR: expected 1 argument
 #FAIL
-CAR: expected argument list
+CAR: expected 1 argument
 #FAIL
 CAR: expected list argument
 #FAIL

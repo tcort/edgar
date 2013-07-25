@@ -36,7 +36,6 @@ edgar_SOURCES = \
 	func_quotient.c		func_quotient.h		\
 	func_remainder.c	func_remainder.h	\
 	func_setq.c		func_setq.h		\
-	func_sqrt.c		func_sqrt.h		\
 	func_times.c		func_times.h		\
 	main.c						\
 	number.c		number.h		\

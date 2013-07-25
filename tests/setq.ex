@@ -3,7 +3,7 @@ TWO
 THREE
 5
 (2 A B C)
-EQUAL: expected argument list
+EQUAL: expected 2 arguments
 #FAIL
 EQUAL: expected 2 arguments
 #FAIL

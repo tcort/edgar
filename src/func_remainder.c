@@ -39,13 +39,12 @@ obj_t * func_remainder(obj_t *args, obj_t *env) {
 
 	obj_t *cur;
 
-	if (!IS_LIST(args)) {
-		fprintf(stdout, "REMAINDER: expected argument list\n");
-		return alloc_fail();
-	} else if (!IS_NIL(CDR(CDR(args)))) {
+	if (list_length(args) != 2) {
 		fprintf(stdout, "REMAINDER: expected 2 arguments\n");
 		return alloc_fail();
-	} else if (!IS_INT(CAR(args)) && !IS_INT(CADR(args))) {
+	}
+
+	if (!IS_INT(CAR(args)) && !IS_INT(CADR(args))) {
 		fprintf(stdout, "REMAINDER: arguments must be INTs.\n");
 		return alloc_fail();
 	}
