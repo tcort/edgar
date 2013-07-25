@@ -31,7 +31,6 @@
 #include "func_greater.h"
 #include "func_int.h"
 #include "func_minus.h"
-#include "func_null.h"
 #include "func_less.h"
 #include "func_plus.h"
 #include "func_quotient.h"
@@ -98,7 +97,6 @@ obj_t * alloc_env(void) {
 	add_func_to_env("LESS", func_less, env);
 	add_func_to_env("GREATER", func_greater, env);
 	add_func_to_env("ATOM", func_atom, env);
-	add_func_to_env("NULL", func_null, env);
 	add_func_to_env("INT", func_int, env);
 	add_func_to_env("COND", func_cond, env);
 	add_func_to_env("SQRT", func_sqrt, env);

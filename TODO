@@ -1,5 +1,4 @@
  * Implement decimal arithmetic.
  * Implement more functions in lib/edgar.lisp
  * Move more functions into lib/edgar.lisp
- 	- NULL
 	- SQRT (wait for decimal arithmetic)

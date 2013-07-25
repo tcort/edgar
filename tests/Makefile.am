@@ -26,7 +26,6 @@ TESTS = \
 	int.sh		\
 	minus.sh	\
 	misc.sh		\
-	null.sh		\
 	less.sh		\
 	libedgar.sh	\
 	plus.sh		\
@@ -60,7 +59,6 @@ CLEANFILES = \
 	int.out		int.out.stdout		int.out.stderr		\
 	minus.out	minus.out.stdout	minus.out.stderr	\
 	misc.out	misc.out.stdout		misc.out.stderr		\
-	null.out	null.out.stdout		null.out.stderr		\
 	less.out	less.out.stdout		less.out.stderr		\
 	libedgar.out	libedgar.out.stdout	libedgar.out.stderr	\
 	plus.out	plus.out.stdout		plus.out.stderr		\
@@ -83,7 +81,6 @@ EXTRA_DIST = test-runner.sh $(TESTS)		\
 	int.in		int.ex			\
 	minus.in	minus.ex		\
 	misc.in		misc.ex			\
-	null.in		null.ex			\
 	less.in		less.ex			\
 	libedgar.in	libedgar.ex		\
 	plus.in		plus.ex			\

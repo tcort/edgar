@@ -32,7 +32,6 @@ edgar_SOURCES = \
 	func_int.c		func_int.h		\
 	func_less.c		func_less.h		\
 	func_minus.c		func_minus.h		\
-	func_null.c		func_null.h		\
 	func_plus.c		func_plus.h		\
 	func_quotient.c		func_quotient.h		\
 	func_remainder.c	func_remainder.h	\

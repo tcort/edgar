@@ -20,7 +20,7 @@
 ; Include it in the environment by running edgar with the -l option like this:
 ; 	edgar -l /usr/share/edgar/edgar.lisp
 ; 
-; Functions: 1+, 1-, ABS, GCD, LCM, LENGTH, ZEROP
+; Functions: 1+, 1-, ABS, GCD, LCM, LENGTH, NULL, ZEROP
 
 ; 1+ - Add 1 to a value
 (DEFUN 1+ (X) (PLUS X 1))
@@ -55,6 +55,10 @@
 		((NULL X) 0)
 		((ATOM X) 1)
 		(T (PLUS (LENGTH (CDR X)) 1))))
+
+
+; NULL - Test if the argument is NIL.
+(DEFUN NULL (X) (EQUAL X NIL))
 
 
 ; ZEROP - Test if the argument is 0.
