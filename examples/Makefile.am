@@ -20,7 +20,6 @@ examples_DATA = \
 	factorial.lisp		\
 	fibonacci.lisp		\
 	gauss.lisp		\
-	list-member.lisp	\
-	pythagoras.lisp
+	list-member.lisp
 
 EXTRA_DIST = $(examples_DATA)
