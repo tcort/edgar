@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-TESTS = \
+SHELL_TESTS = \
 	atom.sh		\
 	car.sh		\
 	cdr.sh		\
@@ -35,6 +35,9 @@ TESTS = \
 	setq.sh		\
 	times.sh
 
+TESTS = \
+	$(SHELL_TESTS)
+
 TESTS_ENVIRONMENT = \
 	DIFF=$(DIFF)						\
 	EDGAR=$(top_builddir)/src/edgar				\
@@ -45,6 +48,10 @@ TESTS_ENVIRONMENT = \
 	TEST_RUNNER=$(top_srcdir)/tests/test-runner.sh		\
 	VALGRIND=$(VALGRIND)					\
 	WINE=$(WINE)
+
+AM_CPPFLAGS = -I$(top_srcdir)/src
+
+# check_PROGRAMS = 
 
 CLEANFILES = \
 	atom.out	atom.out.stdout		atom.out.stderr		\
@@ -67,7 +74,7 @@ CLEANFILES = \
 	setq.out	setq.out.stdout		setq.out.stderr		\
 	times.out	times.out.stdout	times.out.stderr
 
-EXTRA_DIST = test-runner.sh $(TESTS)		\
+EXTRA_DIST = test-runner.sh $(SHELL_TESTS) 	\
 	atom.in		atom.ex			\
 	car.in		car.ex			\
 	cdr.in		cdr.ex			\

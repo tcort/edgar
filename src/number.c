@@ -152,3 +152,32 @@ obj_t * edgar_remainder(obj_t *op1, obj_t *op2) {
 	}
 	return int_op(op1, op2, mpz_mod, "REMAINDER");
 }
+
+int cmp(obj_t *op1, obj_t *op2, char *op_name) {
+	mpz_t op1z;
+	mpz_t op2z;
+	char *s1;
+	char *s2;
+	int r;
+
+	if (!IS_INT(op1) || !IS_INT(op2)) {
+		fprintf(stdout, "%s: expecting INT arguments.\n", op_name);
+		return 77;
+	}
+	
+	s1 = strdup(ATOM(op1));
+	s2 = strdup(ATOM(op2));
+
+	mpz_init_set_str(op1z, s1, 10);
+	mpz_init_set_str(op2z, s2, 10);
+
+	r = mpz_cmp(op1z, op2z);
+
+	mpz_clear(op1z);
+	mpz_clear(op2z);
+
+	free(s1);
+	free(s2);
+
+	return r;
+}

@@ -2,8 +2,8 @@ T
 T
 NIL
 NIL
-NIL
-LESS: expected argument list
+T
+LESS: expected 2 argument
 #FAIL
 LESS: expecting INT arguments.
 #FAIL

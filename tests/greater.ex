@@ -1,11 +1,12 @@
 T
 NIL
-T
+GREATER: expected 2 argument
+#FAIL
 NIL
 NIL
 T
 T
-GREATER: expected argument list
+GREATER: expected 2 argument
 #FAIL
 GREATER: expecting INT arguments.
 #FAIL

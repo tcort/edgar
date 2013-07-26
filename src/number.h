@@ -29,5 +29,6 @@ obj_t * minus(obj_t *op1, obj_t *op2);
 obj_t * times(obj_t *op1, obj_t *op2);
 obj_t * quotient(obj_t *op1, obj_t *op2);
 obj_t * edgar_remainder(obj_t *op1, obj_t *op2);
+int cmp(obj_t *op1, obj_t *op2, char *op_name);
 
 #endif /* __NUMBER_H */

@@ -142,57 +142,20 @@ obj_t * func_equal(obj_t *args, obj_t *env) {
 obj_t * func_greater(obj_t *args, obj_t *env) {
 
 	int r;
-	int first;
-	mpz_t lastz;
-	mpz_t curz;
-	char *s;
 
-	obj_t *cur;
-
-	if (!IS_LIST(args)) {
-		fprintf(stdout, "GREATER: expected argument list\n");
+	if (list_length(args) != 2) {
+		fprintf(stdout, "GREATER: expected 2 argument\n");
 		return alloc_fail();
 	}
 
-	first = 1;
-	mpz_init_set_str(lastz, "0", 10);
-
-	for (cur = args; IS_LIST(cur); cur = CDR(cur)) {
-
-		if (IS_INT(CAR(cur))) {
-
-			s = strdup(ATOM(CAR(cur)));
-
-			if (first) {
-				/* last not defined yet, (GREATER 1) is always T */
-				first = 0;
-				r = 1;
-			} else {
-				mpz_init_set_str(curz, s, 10);
-				r = mpz_cmp(lastz, curz);
-				mpz_clear(curz);
-			}
-
-			mpz_clear(lastz);
-			mpz_init_set_str(lastz, s, 10);
-
-			free(s);
-
-			if (r <= 0) {
-				mpz_clear(lastz);
-				return alloc_nil();
-			}
-
-		} else {
-			mpz_clear(lastz);
-			fprintf(stdout, "GREATER: expecting INT arguments.\n");
-			return alloc_fail();
-		}
+	r = cmp(CAR(args), CADR(args), "GREATER");
+	if (r == 77) {
+		return alloc_fail();
+	} else if (r > 0) {
+		return alloc_t();
+	} else {
+		return alloc_nil();
 	}
-
-	mpz_clear(lastz);
-
-	return alloc_t();
 }
 
 obj_t * func_int(obj_t *args, obj_t *env) {
@@ -212,57 +175,20 @@ obj_t * func_int(obj_t *args, obj_t *env) {
 obj_t * func_less(obj_t *args, obj_t *env) {
 
 	int r;
-	int first;
-	mpz_t lastz;
-	mpz_t curz;
-	char *s;
 
-	obj_t *cur;
-
-	if (!IS_LIST(args)) {
-		fprintf(stdout, "LESS: expected argument list\n");
+	if (list_length(args) != 2) {
+		fprintf(stdout, "LESS: expected 2 argument\n");
 		return alloc_fail();
 	}
 
-	first = 1;
-	mpz_init_set_str(lastz, "0", 10);
-
-	for (cur = args; IS_LIST(cur); cur = CDR(cur)) {
-
-		if (IS_INT(CAR(cur))) {
-
-			s = strdup(ATOM(CAR(cur)));
-
-			if (first) {
-				/* last not defined yet, (LESS 1) is always T */
-				first = 0;
-				r = -1;
-			} else {
-				mpz_init_set_str(curz, s, 10);
-				r = mpz_cmp(lastz, curz);
-				mpz_clear(curz);
-			}
-
-			mpz_clear(lastz);
-			mpz_init_set_str(lastz, s, 10);
-
-			free(s);
-
-			if (r >= 0) {
-				mpz_clear(lastz);
-				return alloc_nil();
-			}
-
-		} else {
-			mpz_clear(lastz);
-			fprintf(stdout, "LESS: expecting INT arguments.\n");
-			return alloc_fail();
-		}
+	r = cmp(CAR(args), CADR(args), "LESS");
+	if (r == 77) {
+		return alloc_fail();
+	} else if (r < 0) {
+		return alloc_t();
+	} else {
+		return alloc_nil();
 	}
-
-	mpz_clear(lastz);
-
-	return alloc_t();
 }
 
 obj_t * func_minus(obj_t *args, obj_t *env) {

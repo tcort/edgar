@@ -13,16 +13,16 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(GREATER 3 2 1)
-(GREATER 1 2 3)
+(GREATER 3 2)
+(GREATER 1 3)
 (GREATER 1)
-(GREATER 1 0 1)
-(GREATER -1 0 1)
-(GREATER 1 0 -1)
-(GREATER -1 -2 -3)
+(GREATER 0 1)
+(GREATER -1 0)
+(GREATER 0 -1)
+(GREATER -2 -3)
 (GREATER)
 (GREATER (QUOTE A) (QUOTE B))
-(GREATER 6 5 3)
+(GREATER 5 3)
 (GREATER 3989 399)
 (GREATER 399 3989)
 (GREATER +3 3)
