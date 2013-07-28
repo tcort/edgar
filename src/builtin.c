@@ -139,20 +139,6 @@ obj_t * func_equal(obj_t *args, obj_t *env) {
 	return compare_obj(CAR(args), CADR(args));
 }
 
-obj_t * func_float(obj_t *args, obj_t *env) {
-
-	if (list_length(args) != 1) {
-		fprintf(stdout, "FLOAT: expected 1 argument\n");
-		return alloc_fail();
-	}
-
-	if (IS_FLOAT(CAR(args))) {
-		return alloc_t();
-	} else {
-		return alloc_nil();
-	}
-}
-
 obj_t * func_greater(obj_t *args, obj_t *env) {
 
 	int r;
