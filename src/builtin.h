@@ -27,6 +27,7 @@ obj_t * func_cdr(obj_t *args, obj_t *env);
 obj_t * func_cond(obj_t *args, obj_t *env);
 obj_t * func_cons(obj_t *args, obj_t *env);
 obj_t * func_equal(obj_t *args, obj_t *env);
+obj_t * func_float(obj_t *args, obj_t *env);
 obj_t * func_greater(obj_t *args, obj_t *env);
 obj_t * func_int(obj_t *args, obj_t *env);
 obj_t * func_less(obj_t *args, obj_t *env);

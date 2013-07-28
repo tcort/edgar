@@ -13,20 +13,25 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(PLUS (TIMES 3 (PLUS 5 1)) (QUOTIENT (TIMES 12 3) (PLUS 7 5)))
-(CONS (CAR (QUOTE (A B C))) (CDR (QUOTE (A B C))))
-(SETQ  TWO  2)
-(SETQ  THREE  3)
-(DEFUN MYADD (X Y)
-	(COND
-		((EQUAL X 0) Y)
-		(T (PLUS 1 (MYADD (MINUS X 1) Y)))))
-(SETQ FIVE (MYADD TWO THREE))
-(MYADD FIVE FIVE)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(PLUS 2 2);;;;;;;
-(PLUS;;;;;;;
-2;2)
-3;;;;;;;;;;;;
-);;;;;;;;;
-(PLUS 4 4)
+(FLOAT (QUOTE -))
+(FLOAT (QUOTE +))
+(FLOAT (QUOTE 1.0))
+(FLOAT (QUOTE -1.0))
+(FLOAT (QUOTE +1.0))
+(FLOAT (QUOTE 123.0))
+(FLOAT (QUOTE -123.0))
+(FLOAT (QUOTE +123.0))
+(FLOAT (QUOTE 1))
+(FLOAT (QUOTE 1-))
+(FLOAT (QUOTE 1.0-1))
+(FLOAT (QUOTE T))
+(FLOAT (QUOTE NIL))
+(FLOAT 123.0)
+(FLOAT +123.0)
+(FLOAT -123.0)
+(FLOAT)
+(FLOAT 1 2 3)
+(SETQ PI 3.1415926)
+(FLOAT PI)
+(FLOAT .1)
+(FLOAT 1.)

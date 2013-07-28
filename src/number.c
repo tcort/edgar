@@ -54,6 +54,47 @@ obj_t * number_filter(obj_t * o) {
 	return o;
 }
 
+int is_float_obj(obj_t *o) {
+
+	int i;
+	int points;
+	char *s;
+
+	if (o == NULL || !IS_ATOM(o)) {
+		return 0;
+	}
+
+	s = ATOM(o);
+	if (s[0] == '\0') {
+		return 0;
+	}
+
+	points = 0;
+
+	/* first byte can be sign or digit */
+	if (s[0] != '+' && s[0] != '-' && !isdigit(s[0]) && s[0] != '.') {
+		return 0;
+	}
+	if (s[0] == '.') points++;
+
+	/* cannot have a lonely sign -- signs must be followed by a digit */
+	if ((s[0] == '+' || s[0] == '-') && !(isdigit(s[1]) || s[1] == '.')) {
+		return 0;
+	}
+
+
+	/* rest of bytes must be digits or a decimal point */
+	for (i = 1; i < strlen(s); i++) {
+		if (s[i] == '.') {
+			points++;
+		} else if (!isdigit(s[i])) {
+			return 0;
+		}
+	}
+
+	return (points == 1);
+}
+
 int is_int_obj(obj_t *o) {
 
 	int i;

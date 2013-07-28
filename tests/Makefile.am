@@ -22,6 +22,7 @@ SHELL_TESTS = \
 	cons.sh		\
 	defun.sh	\
 	equal.sh	\
+	float.sh	\
 	greater.sh	\
 	int.sh		\
 	minus.sh	\
@@ -61,6 +62,7 @@ CLEANFILES = \
 	cons.out 	cons.out.stdout		cons.out.stderr		\
 	defun.out	defun.out.stdout	defun.out.stderr	\
 	equal.out	equal.out.stdout	equal.out.stderr	\
+	float.out	float.out.stdout	float.out.stderr	\
 	greater.out	greater.out.stdout	greater.out.stderr	\
 	int.out		int.out.stdout		int.out.stderr		\
 	minus.out	minus.out.stdout	minus.out.stderr	\
@@ -82,6 +84,7 @@ EXTRA_DIST = test-runner.sh $(SHELL_TESTS) 	\
 	cond.in		cond.ex			\
 	defun.in	defun.ex		\
 	equal.in	equal.ex		\
+	float.in	float.ex		\
 	greater.in	greater.ex		\
 	int.in		int.ex			\
 	minus.in	minus.ex		\

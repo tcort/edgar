@@ -82,6 +82,7 @@ obj_t * alloc_env(void) {
 	add_func_to_env("GREATER", func_greater, env);
 	add_func_to_env("ATOM", func_atom, env);
 	add_func_to_env("INT", func_int, env);
+	add_func_to_env("FLOAT", func_float, env);
 	add_func_to_env("COND", func_cond, env);
 	add_func_to_env("PLUS", func_plus, env);
 	add_func_to_env("MINUS", func_minus, env);
