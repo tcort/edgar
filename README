@@ -21,8 +21,9 @@ Check Dependencies (i.e. dependencies for running the test suite)
 =================================================================
 
  - libgmp - GNU MP http://gmplib.org/
-- diff
-- valgrind (optional) - http://valgrind.org/
+ - diff
+ - valgrind (optional - adds memory error/leak checks) - http://valgrind.org/
+ - wine (optional - runs tests on mingw32 cross builds) http://www.winehq.org/
 
 Runtime Dependencies (i.e. dependencies needed once installed)
 ==============================================================
