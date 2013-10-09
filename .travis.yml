@@ -1,0 +1,11 @@
+language: c
+complier:
+  - clang
+  - gcc
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq libgmp-dev valgrind
+
+before_script: autoreconf -i
+script: "./configure && make && make distcheck"
