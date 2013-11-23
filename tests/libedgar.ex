@@ -15,3 +15,7 @@ Unexpected number of arguments
 Unexpected number of arguments
 #FAIL
 3
+2
+6
+4
+982080
