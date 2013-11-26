@@ -28,6 +28,7 @@
 
 #include "const.h"
 #include "builtin.h"
+#include "env.h"
 #include "eval.h"
 #include "obj.h"
 
