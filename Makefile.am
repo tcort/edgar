@@ -15,3 +15,4 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 SUBDIRS = examples lib man src tests
+EXTRA_DIST = README.md
