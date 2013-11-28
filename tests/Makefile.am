@@ -15,24 +15,25 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 SHELL_TESTS = \
-	atom.sh		\
-	car.sh		\
-	cdr.sh		\
-	cond.sh		\
-	cons.sh		\
-	defun.sh	\
-	equal.sh	\
-	greater.sh	\
-	int.sh		\
-	minus.sh	\
-	misc.sh		\
-	less.sh		\
-	libedgar.sh	\
-	plus.sh		\
-	quote.sh	\
-	quotient.sh	\
-	remainder.sh	\
-	setq.sh		\
+	atom.sh				\
+	car.sh				\
+	cdr.sh				\
+	cond.sh				\
+	cons.sh				\
+	defun.sh			\
+	equal.sh			\
+	greater.sh			\
+	int.sh				\
+	minus.sh			\
+	misc.sh				\
+	less.sh				\
+	libedgar.sh			\
+	plus.sh				\
+	quote.sh			\
+	quotient.sh			\
+	regression-apply-leak.sh	\
+	remainder.sh			\
+	setq.sh				\
 	times.sh
 
 TESTS = \
@@ -70,27 +71,31 @@ CLEANFILES = \
 	plus.out	plus.out.stdout		plus.out.stderr		\
 	quote.out	quote.out.stdout	quote.out.stderr	\
 	quotient.out	quotient.out.stdout	quotient.out.stderr	\
+	regression-apply-leak.out 					\
+	regression-apply-leak.out.stdout				\
+	regression-apply-leak.out.stderr				\
 	remainder.out	remainder.out.stdout	remainder.out.stderr	\
 	setq.out	setq.out.stdout		setq.out.stderr		\
 	times.out	times.out.stdout	times.out.stderr
 
-EXTRA_DIST = test-runner.sh $(SHELL_TESTS) 	\
-	atom.in		atom.ex			\
-	car.in		car.ex			\
-	cdr.in		cdr.ex			\
-	cons.in		cons.ex			\
-	cond.in		cond.ex			\
-	defun.in	defun.ex		\
-	equal.in	equal.ex		\
-	greater.in	greater.ex		\
-	int.in		int.ex			\
-	minus.in	minus.ex		\
-	misc.in		misc.ex			\
-	less.in		less.ex			\
-	libedgar.in	libedgar.ex		\
-	plus.in		plus.ex			\
-	quote.in	quote.ex		\
-	quotient.in	quotient.ex		\
-	remainder.in	remainder.ex		\
-	setq.in		setq.ex			\
-	times.in	times.ex
+EXTRA_DIST = test-runner.sh $(SHELL_TESTS) 				\
+	atom.in				atom.ex				\
+	car.in				car.ex				\
+	cdr.in				cdr.ex				\
+	cons.in				cons.ex				\
+	cond.in				cond.ex				\
+	defun.in			defun.ex			\
+	equal.in			equal.ex			\
+	greater.in			greater.ex			\
+	int.in				int.ex				\
+	minus.in			minus.ex			\
+	misc.in				misc.ex				\
+	less.in				less.ex				\
+	libedgar.in			libedgar.ex			\
+	plus.in				plus.ex				\
+	quote.in			quote.ex			\
+	quotient.in			quotient.ex			\
+	regression-apply-leak.in	regression-apply-leak.ex	\
+	remainder.in			remainder.ex			\
+	setq.in				setq.ex				\
+	times.in			times.ex

@@ -60,6 +60,8 @@ obj_t * apply(obj_t *args, obj_t *env) {
 		if ((IS_LIST(func_args) && !IS_LIST(call_args)) ||
 				(!IS_LIST(func_args) && IS_LIST(call_args))) {
 
+			free_obj(body); /* clean up */
+
 			fprintf(stdout, "Unexpected number of arguments\n");
 			return alloc_fail();
 		}

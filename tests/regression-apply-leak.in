@@ -1,0 +1,2 @@
+(DEFUN ADD1 (X) (PLUS 1 X))
+(ADD1 2 3)
