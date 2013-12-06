@@ -28,6 +28,7 @@ int load_file(char *filename, obj_t * env) {
 
 	f = fopen(filename, "r");
 	if (f == NULL) {
+		perror(__func__);
 		return -1;
 	}
 
