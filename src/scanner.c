@@ -39,7 +39,6 @@ char *scanner_next_token(FILE *f) {
 					/* skip comments */
 					c = getc(f);
 				} while (!feof(f) && c != '\n');
-				continue;
 			case ' ':
 			case '\f':
 			case '\n':
