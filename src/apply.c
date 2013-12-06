@@ -28,10 +28,10 @@ obj_t * apply(obj_t *args, obj_t *env) {
 
 	assert(IS_LIST(args));
 
-	if (IS_LIST(args) && IS_LIST(CAR(args)) && IS_FUNC(CAR(CAR(args)))) {
+	if (IS_LIST(CAR(args)) && IS_FUNC(CAR(CAR(args)))) {
 
 		return (FUNC(CAR(CAR(args))))(CDR(args), env);
-	} else if (IS_LIST(args) && IS_LIST(CAR(args)) && IS_DEFUNC(CAR(CAR(args)))) {
+	} else if (IS_LIST(CAR(args)) && IS_DEFUNC(CAR(CAR(args)))) {
 
 		obj_t * func_arg;
 		obj_t * func_args;
