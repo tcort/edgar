@@ -1,0 +1,10 @@
+Here are some ideas for things to work on:
+
+* support for floating point numbers.
+* support for strings.
+* input with readline or libedit.
+* i18n with gettext.
+* write more tests.
+* write unit tests of individual C functions.
+* find and fix bugs.
+
