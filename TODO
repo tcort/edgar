@@ -7,4 +7,4 @@ Here are some ideas for things to work on:
 * write more tests.
 * write unit tests of individual C functions.
 * find and fix bugs.
-
+* support multiple arguments for PLUS/MINUS/TIMES/QUOTIENT/...
