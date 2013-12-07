@@ -1,10 +1,26 @@
-Here are some ideas for things to work on:
+= TODO List
+
+Here are some things that need work. Feel free to pick some tasks from this
+list and start working on them.
+
+New features should come with documentation (i.e. update the man page)
+as well as some tests.
+
+== Core (new features)
 
 * support for floating point numbers.
 * support for strings.
+* support multiple arguments for PLUS/MINUS/TIMES/QUOTIENT/...
+
+== Core (improvements)
+
 * input with readline or libedit.
 * i18n with gettext.
+
+== QA
+
 * write more tests.
-* write unit tests of individual C functions.
+  * functional tests of the interpreter.
+  * unit tests of the individual functions.
+  * regression tests when bugs are fixed.
 * find and fix bugs.
-* support multiple arguments for PLUS/MINUS/TIMES/QUOTIENT/...
