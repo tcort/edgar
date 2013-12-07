@@ -5,7 +5,7 @@ complier:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq libgmp-dev valgrind
+  - sudo apt-get install -qq libgmp-dev valgrind clang
 
 before_script: autoreconf -i
-script: "./configure && make && make distcheck"
+script: "scan-build ./configure && scan-build make && scan-build make distcheck"
