@@ -24,4 +24,4 @@
 (print "list" '(1 2 3))
 
 (setq foo 42)
-(print foo)
+(print "foo = " foo)

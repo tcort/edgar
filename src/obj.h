@@ -74,6 +74,7 @@ void replace_obj(obj_t *replace, obj_t *with, obj_t *exp);
 void append_obj(obj_t *list, obj_t *o);
 void free_obj(obj_t *o);
 void print_obj(obj_t *o);
+void print_list(obj_t *list);
 unsigned long list_length(obj_t *o);
 
 #endif /* __OBJ_H */
