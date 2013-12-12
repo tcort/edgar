@@ -25,11 +25,7 @@ if test "x${DIFF}" = "x"; then
 	exit 77
 fi
 
-if test "x${1}" = "xlibedgar"; then
 ARGS="-l ${LIBEDGAR}"
-else
-ARGS=""
-fi
 
 if test "x${VALGRIND}" != "x"; then
 	${VALGRIND} --tool=memcheck --leak-check=yes ${EDGAR} ${IN} 1> ${OUT}.stdout 2> ${OUT}.stderr
