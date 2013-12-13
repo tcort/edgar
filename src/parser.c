@@ -39,7 +39,7 @@ static obj_t *parse_one(FILE *f, char *peeked) {
 
 	if (next == NULL) {
 		return alloc_nil();
-	} else if (*next == '(') {
+	} else if (*next == '(' && strlen(next) == 1) {
 		free(next);
 		return parse_list(f);
 	} else {
@@ -53,7 +53,7 @@ static obj_t *parse_list(FILE *f) {
 
 	next = scanner_next_token(f);
 
-	if (next == NULL || *next == ')') {
+	if (next == NULL || (*next == ')' && strlen(next) == 1)) {
 		free(next);
 		return alloc_nil();
 	} else {
