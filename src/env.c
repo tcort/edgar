@@ -89,6 +89,7 @@ obj_t * alloc_env(void) {
 	add_func_to_env("QUOTIENT", func_quotient, env);
 	add_func_to_env("REMAINDER", func_remainder, env);
 	add_func_to_env("IF", func_if, env);
+	add_func_to_env("PRINT", func_print, env);
 
 	return env;
 }

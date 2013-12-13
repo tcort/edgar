@@ -28,7 +28,7 @@
 #include "obj.h"
 
 static void print_atom(obj_t *atom);
-static void print_list(obj_t *list);
+void print_list(obj_t *list);
 static void print_func(obj_t *func);
 static void print_defunc(obj_t *defunc);
 
@@ -170,7 +170,7 @@ static void print_defunc(obj_t *defunc) {
 	fprintf(stdout, ")]>");
 }
 
-static void print_list(obj_t *list) {
+void print_list(obj_t *list) {
 
 	assert(IS_LIST(list));
 

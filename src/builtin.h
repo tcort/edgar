@@ -37,5 +37,6 @@ obj_t * func_remainder(obj_t *args, obj_t *env);
 obj_t * func_setq(obj_t *args, obj_t *env);
 obj_t * func_times(obj_t *args, obj_t *env);
 obj_t * func_if(obj_t *args, obj_t *env);
+obj_t * func_print(obj_t *args, obj_t *env);
 
 #endif /* __BUILTIN_H */
