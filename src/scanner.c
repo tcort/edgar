@@ -31,6 +31,7 @@ char *scanner_next_token(FILE *f) {
 	int pos;
 	char buf[MAX_ATOM_LEN];
 
+	memset(buf, '\0', MAX_ATOM_LEN);
 	while ((c = getc(f)) != EOF) {
 
 		switch (c) {
@@ -52,20 +53,21 @@ char *scanner_next_token(FILE *f) {
 				return strdup("(");
 			case ')':
 				return strdup(")");
-			default:
-				if (c == '"') {
-					for (pos = 0; pos < MAX_ATOM_LEN; pos++) {
-						char s = getc(f);
-						if (s == '"') {
-							buf[pos] = '\0';
-							return strdup(buf);
-						}
-						buf[pos] = s;
+			case '"':
+				/* read quoted string */
+				for (pos = 0; pos < MAX_ATOM_LEN; pos++) {
+					c = getc(f);
+					if (c == '"') {
+						buf[pos] = '\0';
+						return strdup(buf);
 					}
+					buf[pos] = c;
 				}
+				buf[MAX_ATOM_LEN - 1] = '\0';
+				return strdup(buf);
 
+			default:
 				ungetc(c, f);
-				memset(buf, '\0', MAX_ATOM_LEN);
 				for (pos = 0; pos < MAX_ATOM_LEN; pos++) {
 
 					buf[pos] = getc(f);
