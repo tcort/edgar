@@ -259,3 +259,9 @@ obj_t * func_times(obj_t *args, obj_t *env) {
 
 	return times(CAR(args), CADR(args));
 }
+
+obj_t * func_print(obj_t *args, obj_t *env) {
+    print_list(args);
+    fprintf(stdout,"\n");
+    return alloc_nil();
+}
