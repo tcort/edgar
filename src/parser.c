@@ -24,12 +24,12 @@
 #include "parser.h"
 #include "scanner.h"
 
-static obj_t *parse_one(FILE *f, char *peek);
+static obj_t *parse_one(FILE *f, token_t *peeked);
 static obj_t *parse_list(FILE *f);
 
-static obj_t *parse_one(FILE *f, char *peeked) {
+static obj_t *parse_one(FILE *f, token_t *peeked) {
 
-	char *next;
+	token_t *next;
 
 	if (peeked == NULL) {
 		next = scanner_next_token(f);
@@ -39,22 +39,33 @@ static obj_t *parse_one(FILE *f, char *peeked) {
 
 	if (next == NULL) {
 		return alloc_nil();
-	} else if (*next == '(' && strlen(next) == 1) {
-		free(next);
+	} else if (next->token_type == OPAREN_T) {
+		free_token(next);
 		return parse_list(f);
 	} else {
-		return number_filter(alloc_atom(next));
+
+		obj_t *atom;
+
+		if (next->token_type == STRING_T) {
+			atom = alloc_string(strdup(next->text));
+		} else {
+			atom = number_filter(alloc_atom(strdup(next->text)));
+		}
+
+		free_token(next);
+
+		return atom;
 	}
 }
 
 static obj_t *parse_list(FILE *f) {
 
-	char *next;
+	token_t *next;
 
 	next = scanner_next_token(f);
 
-	if (next == NULL || (*next == ')' && strlen(next) == 1)) {
-		free(next);
+	if (next == NULL || next->token_type == CPAREN_T) {
+		free_token(next);
 		return alloc_nil();
 	} else {
 		obj_t *car;

@@ -75,6 +75,19 @@ obj_t * alloc_atom(char *val) {
 	return new_atom;
 }
 
+obj_t * alloc_string(char *val) {
+
+	obj_t *new_str;
+
+	new_str = (obj_t *) malloc(sizeof(obj_t));
+	assert(new_str != NULL);
+
+	new_str->type = STR;
+	ATOM(new_str) = val;
+
+	return new_str;
+}
+
 obj_t * alloc_list(obj_t *car, obj_t *cdr) {
 
 	obj_t *new_list;

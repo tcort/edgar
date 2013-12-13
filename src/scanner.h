@@ -21,6 +21,13 @@
 
 #include <stdio.h>
 
-char *scanner_next_token(FILE *f);
+typedef struct token {
+	enum token_types { OPAREN_T, CPAREN_T, STRING_T, ATOM_T} token_type;
+	char *text;
+} token_t;
+
+token_t *alloc_token(enum token_types token_type, char *text);
+void free_token(token_t *token);
+token_t *scanner_next_token(FILE *f);
 
 #endif /* __SCANNER_H */

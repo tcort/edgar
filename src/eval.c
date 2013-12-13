@@ -37,7 +37,12 @@ obj_t * eval(obj_t * exp, obj_t *env) {
 	obj_t *args;
 	obj_t *defunc;
 
-	if (IS_ATOM(exp)) {
+	if (IS_STR(exp)) {
+
+		/* string literals eval to themselves */
+		return clone_obj(exp);	
+	
+	} else if (IS_ATOM(exp)) {
 
 		int diff;
 		obj_t *q;

@@ -22,7 +22,7 @@
 #include <string.h>
 
 typedef struct obj {
-	enum obj_type {ATOM=0x01, LIST=0x02, FUNC=0x04, DEFUNC=0x08} type;
+	enum obj_type {ATOM=0x01, LIST=0x02, FUNC=0x04, DEFUNC=0x08, STR=0x10} type;
 	union val {
 		struct pair {
 			struct obj *car;
@@ -52,7 +52,8 @@ typedef struct obj {
 
 /* Simple type checking and utility functions */
 #define IS_LIST(x) (x != NULL && x->type == LIST)
-#define IS_ATOM(x) (x != NULL && x->type == ATOM)
+#define IS_STR(x) (x != NULL && x->type == STR)
+#define IS_ATOM(x) (x != NULL && (x->type == ATOM || IS_STR(x)))
 #define IS_FUNC(x) (x != NULL && x->type == FUNC)
 #define IS_DEFUNC(x) (x != NULL && x->type == DEFUNC)
 #define IS_INT(x) (x != NULL && IS_ATOM(x) && is_int_obj(x))
@@ -65,6 +66,7 @@ obj_t * alloc_t(void);
 obj_t * alloc_nil(void);
 obj_t * alloc_fail(void);
 obj_t * alloc_atom(char *val);
+obj_t * alloc_string(char *val);
 obj_t * alloc_list(obj_t *car, obj_t *cdr);
 obj_t * alloc_func(obj_t * (*func)(obj_t *, obj_t *));
 obj_t * alloc_defunc(char * name, obj_t *args, obj_t *body);
