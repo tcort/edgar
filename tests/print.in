@@ -20,3 +20,6 @@
 (SETQ A 42)
 (PRINT A)
 (PRINT "Hello World!")
+(PRINT "\"Hello, World!\"")
+(PRINT "Apple\n\tSauce")
+(PRINT "(PRINT \"Hello, World!\")")

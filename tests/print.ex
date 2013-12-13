@@ -11,3 +11,10 @@ A
 NIL
 Hello World!
 NIL
+"Hello, World!"
+NIL
+Apple
+	Sauce
+NIL
+(PRINT "Hello, World!")
+NIL

@@ -60,6 +60,27 @@ char *scanner_next_token(FILE *f) {
 					if (c == '"') {
 						buf[pos] = '\0';
 						return strdup(buf);
+					} else if (c == '\\') {
+						c = getc(f); /* escaped char */
+						switch (c) {
+							case 'f':
+								c = '\f';
+								break;
+							case 'n':
+								c = '\n';
+								break;
+							case 'r':
+								c = '\r';
+								break;
+							case 't':
+								c = '\t';
+								break;
+							case 'v':
+								c = '\v';
+								break;
+							default:
+								break;
+						}
 					}
 					buf[pos] = c;
 				}
