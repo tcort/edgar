@@ -238,7 +238,11 @@ static obj_t *clone_atom(obj_t *o) {
 
 	assert(IS_ATOM(o));
 
-	c = alloc_atom(strdup(ATOM(o)));
+	if (IS_STR(o)) {
+		c = alloc_string(strdup(ATOM(o)));
+	} else {
+		c = alloc_atom(strdup(ATOM(o)));
+	}
 
 	return c;
 }

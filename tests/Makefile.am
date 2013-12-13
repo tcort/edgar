@@ -33,6 +33,7 @@ SHELL_TESTS = \
 	quote.sh			\
 	quotient.sh			\
 	regression-apply-leak.sh	\
+	regression-setq-str.sh		\
 	remainder.sh			\
 	setq.sh				\
 	times.sh
@@ -86,12 +87,15 @@ CLEANFILES = \
 	less.out	less.out.stdout		less.out.stderr		\
 	libedgar.out	libedgar.out.stdout	libedgar.out.stderr	\
 	plus.out	plus.out.stdout		plus.out.stderr		\
-	print.out	print.out.stdout		print.out.stderr		\
+	print.out	print.out.stdout	print.out.stderr	\
 	quote.out	quote.out.stdout	quote.out.stderr	\
 	quotient.out	quotient.out.stdout	quotient.out.stderr	\
 	regression-apply-leak.out 					\
 	regression-apply-leak.out.stdout				\
 	regression-apply-leak.out.stderr				\
+	regression-setq-str.out						\
+	regression-setq-str.out.stdout					\
+	regression-setq-str.out.stderr					\
 	remainder.out	remainder.out.stdout	remainder.out.stderr	\
 	setq.out	setq.out.stdout		setq.out.stderr		\
 	times.out	times.out.stdout	times.out.stderr
@@ -115,6 +119,7 @@ EXTRA_DIST = test-runner.sh $(SHELL_TESTS) 				\
 	quote.in			quote.ex			\
 	quotient.in			quotient.ex			\
 	regression-apply-leak.in	regression-apply-leak.ex	\
+	regression-setq-str.in		regression-setq-str.ex		\
 	remainder.in			remainder.ex			\
 	setq.in				setq.ex				\
 	times.in			times.ex
