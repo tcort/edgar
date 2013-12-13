@@ -63,6 +63,10 @@ expression 'e2'. Otherwise, NIL is returned.
 \fB(GREATER i1 i2)\fR
 Return T if integer 'i1' is strictly greater than 'i2', otherwise NIL.
 .TP
+\fB(IF e1 e2 e3)\fR
+Evaluate expression 'e1'. If true, return the evaluation of 'e2', otherwise
+return the evaluation of 'e3'.
+.TP
 \fB(INT i)\fR
 Returns T if expression 'i' evaluates to an integer, otherwise NIL.
 .TP
@@ -74,6 +78,9 @@ Difference the value of integers i1 and i2, and return the result.
 .TP
 \fB(PLUS i1 i2)\fR
 Sum the value of integers i1 and i2, and return the result.
+.TP
+\fB(PRINT e)\fR
+Evaluate expression 'e' and print the result to STDOUT.
 .TP
 \fB(QUOTE e)\fR
 Return the expression 'e' exactly as it is, without evaluating it.
