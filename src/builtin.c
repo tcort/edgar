@@ -261,24 +261,30 @@ obj_t * func_times(obj_t *args, obj_t *env) {
 }
 
 obj_t * func_if(obj_t *args, obj_t *env) {
-    if (list_length(args) != 3) {
-        fprintf(stdout, "IF: expected 3 arguments\n");
-        return alloc_fail();
-    }
-    obj_t *predResult = eval(CAR(args), env);
-    obj_t *onTrue = CAR(CDR(args));
-    obj_t *onFalse = CAR(CDR(CDR(args)));
 
-    if (IS_T(predResult)) {
-        free_obj(predResult);
-        return eval(onTrue, env);
-    }
-    free_obj(predResult);
-    return eval(onFalse, env);
+	if (list_length(args) != 3) {
+		fprintf(stdout, "IF: expected 3 arguments\n");
+		return alloc_fail();
+	}
+
+	obj_t *predResult = eval(CAR(args), env);
+	obj_t *onTrue = CAR(CDR(args));
+	obj_t *onFalse = CAR(CDR(CDR(args)));
+
+	if (IS_T(predResult)) {
+		free_obj(predResult);
+		return eval(onTrue, env);
+	}
+
+	free_obj(predResult);
+
+	return eval(onFalse, env);
 }
 
 obj_t * func_print(obj_t *args, obj_t *env) {
-    print_list(args);
-    fprintf(stdout,"\n");
-    return alloc_nil();
+
+	print_list(args);
+	fprintf(stdout, "\n");
+
+	return alloc_nil();
 }

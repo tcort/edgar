@@ -53,16 +53,17 @@ char *scanner_next_token(FILE *f) {
 			case ')':
 				return strdup(")");
 			default:
-                if (c == '"') {
-                    for (pos = 0; pos < MAX_ATOM_LEN; pos++) {
-                        char s = getc(f);
-                        if (s == '"') {
-                            buf[pos] = '\0';
-                            return strdup(buf);
-                        }
-                        buf[pos] = s;
-                    }
-                }
+				if (c == '"') {
+					for (pos = 0; pos < MAX_ATOM_LEN; pos++) {
+						char s = getc(f);
+						if (s == '"') {
+							buf[pos] = '\0';
+							return strdup(buf);
+						}
+						buf[pos] = s;
+					}
+				}
+
 				ungetc(c, f);
 				memset(buf, '\0', MAX_ATOM_LEN);
 				for (pos = 0; pos < MAX_ATOM_LEN; pos++) {
