@@ -62,6 +62,11 @@ void unit_test_obj_alloc_t(void) {
 
 int main(int argc, char *argv[]) {
 
+	if (argc != 1) {
+		fprintf(stdout, "Usage: %s\n", argv[0]);
+		return FAIL;
+	}
+
 	unit_test_obj_alloc_t();
 
 	fprintf(stdout,
