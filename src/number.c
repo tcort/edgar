@@ -58,7 +58,7 @@ obj_t * number_filter(obj_t * o) {
 
 int is_int_obj(obj_t *o) {
 
-	int i;
+	size_t i;
 	char *s;
 
 	if (o == NULL || !IS_ATOM(o)) {
