@@ -59,6 +59,7 @@ obj_t * number_filter(obj_t * o) {
 int is_int_obj(obj_t *o) {
 
 	size_t i;
+	size_t len;
 	char *s;
 
 	if (o == NULL || !IS_ATOM(o)) {
@@ -81,7 +82,7 @@ int is_int_obj(obj_t *o) {
 	}
 
 	/* rest of bytes must be digits */
-	for (i = 1; i < strlen(s); i++) {
+	for (i = 1, len = strlen(s); i < len; i++) {
 		if (!isdigit(s[i])) {
 			return 0;
 		}
