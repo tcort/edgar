@@ -34,6 +34,10 @@
 
 obj_t * func_atom(obj_t *args, obj_t *env) {
 
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
+
 	if (list_length(args) != 1) {
 		fprintf(stdout, "ATOM: expected 1 argument\n");
 		return alloc_fail();
@@ -47,6 +51,10 @@ obj_t * func_atom(obj_t *args, obj_t *env) {
 }
 
 obj_t * func_car(obj_t *args, obj_t *env) {
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	if (list_length(args) != 1) {
 		fprintf(stdout, "CAR: expected 1 argument\n");
@@ -62,6 +70,10 @@ obj_t * func_car(obj_t *args, obj_t *env) {
 }
 
 obj_t * func_cdr(obj_t *args, obj_t *env) {
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	if (list_length(args) != 1) {
 		fprintf(stdout, "CDR: expected 1 argument\n");
@@ -79,6 +91,10 @@ obj_t * func_cdr(obj_t *args, obj_t *env) {
 obj_t * func_cond(obj_t *args, obj_t *env) {
 
 	obj_t *pred, *exp, *cur, *pair, *result;
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	if (!IS_LIST(args)) {
 		fprintf(stdout, "COND: expected argument list\n");
@@ -114,6 +130,10 @@ obj_t * func_cons(obj_t *args, obj_t *env) {
 
 	obj_t *x, *y;
 
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
+
 	if (list_length(args) != 2) {
 		fprintf(stdout, "CONS: expected 2 arguments\n");
 		return alloc_fail();
@@ -132,6 +152,10 @@ obj_t * func_cons(obj_t *args, obj_t *env) {
 
 obj_t * func_equal(obj_t *args, obj_t *env) {
 
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
+
 	if (list_length(args) != 2) {
 		fprintf(stdout, "EQUAL: expected 2 arguments\n");
 		return alloc_fail();
@@ -143,6 +167,10 @@ obj_t * func_equal(obj_t *args, obj_t *env) {
 obj_t * func_greater(obj_t *args, obj_t *env) {
 
 	int r;
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	if (list_length(args) != 2) {
 		fprintf(stdout, "GREATER: expected 2 argument\n");
@@ -161,6 +189,10 @@ obj_t * func_greater(obj_t *args, obj_t *env) {
 
 obj_t * func_int(obj_t *args, obj_t *env) {
 
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
+
 	if (list_length(args) != 1) {
 		fprintf(stdout, "INT: expected 1 argument\n");
 		return alloc_fail();
@@ -176,6 +208,10 @@ obj_t * func_int(obj_t *args, obj_t *env) {
 obj_t * func_less(obj_t *args, obj_t *env) {
 
 	int r;
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	if (list_length(args) != 2) {
 		fprintf(stdout, "LESS: expected 2 argument\n");
@@ -195,6 +231,10 @@ obj_t * func_less(obj_t *args, obj_t *env) {
 obj_t * func_arith(obj_t *args, obj_t *env, obj_t * (*f)(obj_t *, obj_t *)) {
 	obj_t * result = NULL, *cur, *rest;
 
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
+
 	for (cur = CAR(args), rest = CDR(args), result = clone_obj(cur); IS_LIST(rest); rest = CDR(rest)) {
 		obj_t * new_result = f(result, CAR(rest));
 		free_obj(result);
@@ -211,6 +251,10 @@ obj_t * func_arith(obj_t *args, obj_t *env, obj_t * (*f)(obj_t *, obj_t *)) {
 obj_t * func_minus(obj_t *args, obj_t *env) {
 
 	obj_t *result;
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	if (list_length(args) < 1) {
 		fprintf(stdout, "MINUS: expected at least 1 argument\n");
@@ -231,6 +275,10 @@ obj_t * func_minus(obj_t *args, obj_t *env) {
 
 obj_t * func_plus(obj_t *args, obj_t *env) {
 
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
+
 	if (list_length(args) < 1) {
 		fprintf(stdout, "PLUS: expected at least 1 argument\n");
 		return alloc_fail();
@@ -242,6 +290,10 @@ obj_t * func_plus(obj_t *args, obj_t *env) {
 obj_t * func_quotient(obj_t *args, obj_t *env) {
 
 	obj_t *result;
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	if (list_length(args) < 1) {
 		fprintf(stdout, "QUOTIENT: expected at least 1 argument\n");
@@ -262,6 +314,10 @@ obj_t * func_quotient(obj_t *args, obj_t *env) {
 
 obj_t * func_remainder(obj_t *args, obj_t *env) {
 
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
+
 	if (list_length(args) < 2) {
 		fprintf(stdout, "REMAINDER: expected at least 2 arguments\n");
 		return alloc_fail();
@@ -273,6 +329,10 @@ obj_t * func_remainder(obj_t *args, obj_t *env) {
 obj_t * func_setq(obj_t *args, obj_t *env) {
 
 	int r;
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	if (list_length(args) != 2) {
 		fprintf(stdout, "EQUAL: expected 2 arguments\n");
@@ -290,6 +350,10 @@ obj_t * func_setq(obj_t *args, obj_t *env) {
 
 obj_t * func_times(obj_t *args, obj_t *env) {
 
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
+
 	if (list_length(args) < 1) {
 		fprintf(stdout, "TIMES: expected at least 1 argument\n");
 		return alloc_fail();
@@ -299,6 +363,10 @@ obj_t * func_times(obj_t *args, obj_t *env) {
 }
 
 obj_t * func_if(obj_t *args, obj_t *env) {
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	if (list_length(args) != 3) {
 		fprintf(stdout, "IF: expected 3 arguments\n");
@@ -320,6 +388,10 @@ obj_t * func_if(obj_t *args, obj_t *env) {
 }
 
 obj_t * func_print(obj_t *args, obj_t *env) {
+
+	if (args == NULL || env == NULL) {
+		return alloc_fail();
+	}
 
 	print_list(args);
 	fprintf(stdout, "\n");
