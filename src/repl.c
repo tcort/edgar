@@ -16,6 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
 #define _XOPEN_SOURCE
 #define _POSIX_SOURCE
 
@@ -25,7 +27,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "config.h"
 #include "const.h"
 #include "env.h"
 #include "eval.h"
