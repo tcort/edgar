@@ -56,7 +56,6 @@ void add_func_to_env(char *name, obj_t * (*func)(obj_t *, obj_t *), obj_t *env) 
 
 void add_def_to_env(char *name, obj_t *exp, obj_t *env) {
 
-	obj_t *item;
 	obj_t *key;
 	obj_t *value;
 
