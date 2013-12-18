@@ -330,10 +330,6 @@ void append_obj(obj_t *list, obj_t *o) {
 
 static obj_t * compare_atom(obj_t *o1, obj_t *o2) {
 
-	int r;
-	mpz_t o1z;
-	mpz_t o2z;
-
 	assert(IS_ATOM(o1) && IS_ATOM(o2));
 
 	if (strlen(ATOM(o1)) == strlen(ATOM(o2)) &&
