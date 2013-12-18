@@ -17,8 +17,6 @@
  */
 
 #define _BSD_SOURCE
-#include <assert.h>
-#include <stdio.h>
 
 #include <assert.h>
 #include <gmp.h>
