@@ -3,7 +3,7 @@
 3
 5
 3
-MINUS: expected 2 arguments
+MINUS: expected at least 1 argument
 #FAIL
 3
 -3
@@ -16,3 +16,6 @@ T
 1
 MINUS: expecting INT arguments.
 #FAIL
+0
+1
+-1

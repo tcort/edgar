@@ -3,9 +3,10 @@
 1
 REMAINDER: Divide by 0 Error.
 #FAIL
-REMAINDER: expected 2 arguments
+0
+REMAINDER: expected at least 2 arguments
 #FAIL
-REMAINDER: expected 2 arguments
+REMAINDER: expected at least 2 arguments
 #FAIL
 0
 0

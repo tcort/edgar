@@ -9,7 +9,6 @@ as well as some tests.
 == Core (new features)
 
 * support for floating point numbers.
-* support multiple arguments for PLUS/MINUS/TIMES/QUOTIENT/...
 * support additional functions.
 
 == Core (improvements)

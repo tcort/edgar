@@ -192,44 +192,82 @@ obj_t * func_less(obj_t *args, obj_t *env) {
 	}
 }
 
+obj_t * func_arith(obj_t *args, obj_t *env, obj_t * (*f)(obj_t *, obj_t *)) {
+	obj_t * result = NULL, *cur, *rest;
+
+	for (cur = CAR(args), rest = CDR(args), result = clone_obj(cur); IS_LIST(rest); rest = CDR(rest)) {
+		obj_t * new_result = f(result, CAR(rest));
+		free_obj(result);
+		result = new_result;
+
+		if (IS_FAIL(result)) {
+			break;
+		}
+	}
+
+	return result;
+}
+
 obj_t * func_minus(obj_t *args, obj_t *env) {
 
-	if (list_length(args) != 2) {
-		fprintf(stdout, "MINUS: expected 2 arguments\n");
+	obj_t *result;
+
+	if (list_length(args) < 1) {
+		fprintf(stdout, "MINUS: expected at least 1 argument\n");
 		return alloc_fail();
 	}
 
-	return minus(CAR(args), CADR(args));
+	if (list_length(args) == 1) {
+		obj_t *def_val = alloc_atom(strdup("0"));
+
+		result = minus(def_val, CAR(args));
+		free_obj (def_val);
+	} else {
+		result = func_arith(args, env, minus);
+	}
+
+	return result;
 }
 
 obj_t * func_plus(obj_t *args, obj_t *env) {
 
-	if (list_length(args) != 2) {
-		fprintf(stdout, "PLUS: expected 2 arguments\n");
+	if (list_length(args) < 1) {
+		fprintf(stdout, "PLUS: expected at least 1 argument\n");
 		return alloc_fail();
 	}
 
-	return plus(CAR(args), CADR(args));
+	return func_arith(args, env, plus);
 }
 
 obj_t * func_quotient(obj_t *args, obj_t *env) {
 
-	if (list_length(args) != 2) {
-		fprintf(stdout, "QUOTIENT: expected 2 arguments\n");
+	obj_t *result;
+
+	if (list_length(args) < 1) {
+		fprintf(stdout, "QUOTIENT: expected at least 1 argument\n");
 		return alloc_fail();
 	}
 
-	return quotient(CAR(args), CADR(args));
+	if (list_length(args) == 1) {
+		obj_t *def_val = alloc_atom(strdup("1"));
+
+		result = quotient(def_val, CAR(args));
+		free_obj (def_val);
+	} else {
+		result = func_arith(args, env, quotient);
+	}
+
+	return result;
 }
 
 obj_t * func_remainder(obj_t *args, obj_t *env) {
 
-	if (list_length(args) != 2) {
-		fprintf(stdout, "REMAINDER: expected 2 arguments\n");
+	if (list_length(args) < 2) {
+		fprintf(stdout, "REMAINDER: expected at least 2 arguments\n");
 		return alloc_fail();
 	}
 
-	return edgar_remainder(CAR(args), CADR(args));
+	return func_arith(args, env, edgar_remainder);
 }
 
 obj_t * func_setq(obj_t *args, obj_t *env) {
@@ -252,12 +290,12 @@ obj_t * func_setq(obj_t *args, obj_t *env) {
 
 obj_t * func_times(obj_t *args, obj_t *env) {
 
-	if (list_length(args) != 2) {
-		fprintf(stdout, "TIMES: expected 2 arguments\n");
+	if (list_length(args) < 1) {
+		fprintf(stdout, "TIMES: expected at least 1 argument\n");
 		return alloc_fail();
 	}
 
-	return times(CAR(args), CADR(args));
+	return func_arith(args, env, times);
 }
 
 obj_t * func_if(obj_t *args, obj_t *env) {
