@@ -14,6 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+AM_CPPFLAGS = -Wall -Wextra -O2 -I$(top_srcdir)/src
+
+
 SHELL_TESTS = \
 	atom.sh				\
 	car.sh				\
@@ -68,8 +71,6 @@ TESTS_ENVIRONMENT = \
 	TEST_RUNNER=$(top_srcdir)/tests/test-runner.sh		\
 	VALGRIND=$(VALGRIND)					\
 	WINE=$(WINE)
-
-AM_CPPFLAGS = -I$(top_srcdir)/src
 
 # check_PROGRAMS = 
 
