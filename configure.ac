@@ -17,7 +17,7 @@ dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 dnl don't forget to update the man page version when bumping this version.
 AC_INIT([edgar], [1.0], [Thomas Cort <linuxgeek@gmail.com>])
 AC_COPYRIGHT([Copyright (C) 2013 Thomas Cort <linuxgeek@gmail.com>])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 AM_SILENT_RULES([yes])
 
 dnl
