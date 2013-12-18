@@ -56,7 +56,7 @@ typedef struct obj {
 #define IS_ATOM(x) (x != NULL && (x->type == ATOM || IS_STR(x)))
 #define IS_FUNC(x) (x != NULL && x->type == FUNC)
 #define IS_DEFUNC(x) (x != NULL && x->type == DEFUNC)
-#define IS_INT(x) (x != NULL && IS_ATOM(x) && is_int_obj(x))
+#define IS_INT(x) (x != NULL && IS_ATOM(x) && is_int_obj(x) == 1)
 #define ATOM_EQ(a,s) (IS_ATOM(a) && strlen(ATOM(a)) == strlen(s) && strcmp(ATOM(a), s) == 0)
 #define IS_T(x) ATOM_EQ(x,"T")
 #define IS_NIL(x) ATOM_EQ(x,"NIL")
