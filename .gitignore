@@ -3,6 +3,7 @@ Makefile
 Makefile.in
 aclocal.m4
 autom4te.cache/
+compile
 config.h
 config.in
 config.in~
@@ -20,6 +21,7 @@ src/Makefile.in
 src/*.o
 src/edgar
 stamp-h1
+test-driver
 tests/*.out
 tests/*.stdout
 tests/*.stderr
