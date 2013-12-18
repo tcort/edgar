@@ -29,7 +29,8 @@
 #include "const.h"
 #include "scanner.h"
 
-token_t * alloc_token(enum token_types token_type, char *text) {
+static token_t * alloc_token(enum token_types token_type, char *text);
+static token_t * alloc_token(enum token_types token_type, char *text) {
 
 	token_t *token;
 

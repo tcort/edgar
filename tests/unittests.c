@@ -40,7 +40,9 @@ int pass_count = 0;
  */
 int fail_count = 0;
 
-void unit_test_obj_alloc_t(void) {
+static void unit_test_obj_alloc_t(void);
+
+static void unit_test_obj_alloc_t(void) {
 
 	obj_t *t;
 

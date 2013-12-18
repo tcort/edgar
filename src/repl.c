@@ -64,7 +64,7 @@ void repl(FILE *f, obj_t * env, int silent) {
 
 		/* read */
 		in = parse(f);
-		if (feof(f)) {
+		if (feof(f) != 0) {
 			free_obj(in);
 			break;
 		}
@@ -80,5 +80,5 @@ void repl(FILE *f, obj_t * env, int silent) {
 		free_obj(out);
 
 		/* loop */
-	} while (!feof(f));
+	} while (feof(f) == 0);
 }

@@ -26,7 +26,6 @@ typedef struct token {
 	char *text;
 } token_t;
 
-token_t *alloc_token(enum token_types token_type, char *text);
 void free_token(token_t *token);
 token_t *scanner_next_token(FILE *f);
 

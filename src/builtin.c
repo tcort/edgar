@@ -32,6 +32,8 @@
 #include "eval.h"
 #include "obj.h"
 
+static obj_t * func_arith(obj_t *args, obj_t *env, obj_t * (*f)(obj_t *, obj_t *));
+
 obj_t * func_atom(obj_t *args, obj_t *env) {
 
 	if (args == NULL || env == NULL) {
@@ -228,7 +230,7 @@ obj_t * func_less(obj_t *args, obj_t *env) {
 	}
 }
 
-obj_t * func_arith(obj_t *args, obj_t *env, obj_t * (*f)(obj_t *, obj_t *)) {
+static obj_t * func_arith(obj_t *args, obj_t *env, obj_t * (*f)(obj_t *, obj_t *)) {
 	obj_t * result = NULL, *cur, *rest;
 
 	if (args == NULL || env == NULL) {

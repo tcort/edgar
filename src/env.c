@@ -28,6 +28,8 @@
 #include "env.h"
 #include "obj.h"
 
+static void add_func_to_env(char *name, obj_t * (*func)(obj_t *, obj_t *), obj_t *env);
+
 int add_to_env(obj_t *key, obj_t *value, obj_t *env) {
 
 	int r;
@@ -40,7 +42,7 @@ int add_to_env(obj_t *key, obj_t *value, obj_t *env) {
 	return r;
 }
 
-void add_func_to_env(char *name, obj_t * (*func)(obj_t *, obj_t *), obj_t *env) {
+static void add_func_to_env(char *name, obj_t * (*func)(obj_t *, obj_t *), obj_t *env) {
 
 	obj_t *key;
 	obj_t *value;
