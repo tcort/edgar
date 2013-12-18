@@ -1,14 +1,10 @@
-PLUS: expected 2 arguments
+PLUS: expected at least 1 argument
 #FAIL
-PLUS: expected 2 arguments
-#FAIL
+1
 3
-PLUS: expected 2 arguments
-#FAIL
-PLUS: expected 2 arguments
-#FAIL
-PLUS: expected 2 arguments
-#FAIL
+6
+1
+NIL
 0
 -4
 0

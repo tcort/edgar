@@ -1,10 +1,8 @@
-TIMES: expected 2 arguments
+TIMES: expected at least 1 argument
 #FAIL
-TIMES: expected 2 arguments
-#FAIL
+1
 2
-TIMES: expected 2 arguments
-#FAIL
+6
 1
 TIMES: expecting INT arguments.
 #FAIL
