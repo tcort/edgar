@@ -54,20 +54,6 @@ void add_func_to_env(char *name, obj_t * (*func)(obj_t *, obj_t *), obj_t *env) 
 	return;
 }
 
-void add_def_to_env(char *name, obj_t *exp, obj_t *env) {
-
-	obj_t *key;
-	obj_t *value;
-
-	key = alloc_atom(strdup(name));
-	value = alloc_list(clone_obj(exp), alloc_nil());
-	add_to_env(key, value, env);
-	free_obj(key);
-	free_obj(value);
-
-	return;
-}
-
 obj_t * alloc_env(void) {
 
 	obj_t *env;
@@ -93,10 +79,6 @@ obj_t * alloc_env(void) {
 	add_func_to_env("PRINT", func_print, env);
 
 	return env;
-}
-
-obj_t * clone_env(obj_t *env) {
-	return clone_obj(env);
 }
 
 int insert_env(obj_t *env, obj_t *o) {
@@ -239,15 +221,5 @@ void print_defunc_names(obj_t *env) {
 
 void free_env(obj_t *env) {
 	free_obj(env);
-}
-
-/*
- * Show the environment (mostly for debug purposes)
- */
-void print_env(obj_t *env) {
-	fprintf(stdout, "\n");
-	fprintf(stdout, "=-=-=-=-=-=-= ENVIRONMENT =-=-=-=-=-=-=\n");
-	print_obj(env);
-	fprintf(stdout, "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 }
 
