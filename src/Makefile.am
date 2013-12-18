@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-AM_CPPFLAGS = -Wall -Wextra -O2
+AM_CPPFLAGS = -Wall -Wextra -pedantic -O2
 
 bin_PROGRAMS = edgar
 

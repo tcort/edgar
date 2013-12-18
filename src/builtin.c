@@ -364,6 +364,8 @@ obj_t * func_times(obj_t *args, obj_t *env) {
 
 obj_t * func_if(obj_t *args, obj_t *env) {
 
+	obj_t *result;
+
 	if (args == NULL || env == NULL) {
 		return alloc_fail();
 	}
@@ -373,18 +375,14 @@ obj_t * func_if(obj_t *args, obj_t *env) {
 		return alloc_fail();
 	}
 
-	obj_t *predResult = eval(CAR(args), env);
-	obj_t *onTrue = CAR(CDR(args));
-	obj_t *onFalse = CAR(CDR(CDR(args)));
-
-	if (IS_T(predResult)) {
-		free_obj(predResult);
-		return eval(onTrue, env);
+	result = eval(CAR(args), env);
+	if (IS_T(result)) {
+		free_obj(result);
+		return eval(CAR(CDR(args)), env);
 	}
 
-	free_obj(predResult);
-
-	return eval(onFalse, env);
+	free_obj(result);
+	return eval(CAR(CDR(CDR(args))), env);
 }
 
 obj_t * func_print(obj_t *args, obj_t *env) {
