@@ -11,6 +11,7 @@ programs like factorial, fibonacci, GCD, LCM, and more.
 * C compiler and standard build tools (make, sh, ...).
 * [GNU MP](http://gmplib.org/)
 * [valgrind](http://valgrind.org/) (optional - adds memory error/leak checks)
+* [cppcheck](http://cppcheck.sourceforge.net/) (optional - adds static analysis checks)
 * [wine](http://www.winehq.org/) (optional - runs tests on mingw32 cross builds)
 
 ## Building

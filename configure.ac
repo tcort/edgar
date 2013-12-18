@@ -66,6 +66,17 @@ if test "x$DIFF" = "x"; then
 	AC_MSG_NOTICE([diff is mandatory to run the tests])
 fi
 
+dnl
+dnl Check for cppcheck utility (needed to run some static analysis tests but not to compile)
+dnl
+AC_ARG_VAR([CPPCHECK],[the 'cppcheck' program is used for some static analysis])
+AC_PATH_PROG([CPPCHECK],[cppcheck],[])
+if test "x$CPPCHECK" = "x"; then
+	AC_MSG_NOTICE([==> cppcheck command not found! See http://cppcheck.sourceforge.net/ ])
+	AC_MSG_NOTICE([==> Set CPPCHECK variable if present in non-standard path!])
+	AC_MSG_NOTICE([cppcheck static analysis will be skipped.])
+fi
+
 if test $cross_compiling = yes; then
 	case "$host" in
 		*-*-mingw* | *-*-cygwin)

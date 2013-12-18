@@ -23,6 +23,7 @@ SHELL_TESTS = \
 	cdr.sh				\
 	cond.sh				\
 	cons.sh				\
+	cppcheck.sh			\
 	defun.sh			\
 	equal.sh			\
 	greater.sh			\
@@ -62,8 +63,10 @@ TESTS = \
 	$(SHELL_TESTS)
 
 TESTS_ENVIRONMENT = \
+	CPPCHECK=$(CPPCHECK)					\
 	DIFF=$(DIFF)						\
 	EDGAR=$(top_builddir)/src/edgar				\
+	TOP_SRCDIR=$(top_srcdir)				\
 	EDGAR_LIB_DIR=$(top_srcdir)/lib				\
 	EDGAR_IN_DIR=$(top_srcdir)/tests			\
 	EDGAR_OUT_DIR=$(top_builddir)/tests			\
