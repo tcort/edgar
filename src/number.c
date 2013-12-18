@@ -125,19 +125,19 @@ static obj_t * int_op(obj_t *op1, obj_t *op2, void (*op)(mpz_t rop, const mpz_t 
 	return result;
 }
 
-obj_t * plus(obj_t *op1, obj_t *op2) {
+obj_t * edgar_plus(obj_t *op1, obj_t *op2) {
 	return int_op(op1, op2, mpz_add, "PLUS");
 }
 
-obj_t * minus(obj_t *op1, obj_t *op2) {
+obj_t * edgar_minus(obj_t *op1, obj_t *op2) {
 	return int_op(op1, op2, mpz_sub, "MINUS");
 }
 
-obj_t * times(obj_t *op1, obj_t *op2) {
+obj_t * edgar_times(obj_t *op1, obj_t *op2) {
 	return int_op(op1, op2, mpz_mul, "TIMES");
 }
 
-obj_t * quotient(obj_t *op1, obj_t *op2) {
+obj_t * edgar_quotient(obj_t *op1, obj_t *op2) {
 	if (IS_ATOM(op2) && strcmp(ATOM(op2), "0") == 0) {
 		fprintf(stdout, "QUOTIENT: Divide by 0 Error.\n");
 		return alloc_fail();
@@ -153,7 +153,7 @@ obj_t * edgar_remainder(obj_t *op1, obj_t *op2) {
 	return int_op(op1, op2, mpz_mod, "REMAINDER");
 }
 
-int cmp(obj_t *op1, obj_t *op2, char *op_name) {
+int edgar_cmp(obj_t *op1, obj_t *op2, char *op_name) {
 	mpz_t op1z;
 	mpz_t op2z;
 	char *s1;

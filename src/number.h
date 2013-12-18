@@ -25,11 +25,11 @@ obj_t * number_filter(obj_t * o);
 
 int is_int_obj(obj_t *o);
 
-obj_t * plus(obj_t *op1, obj_t *op2);
-obj_t * minus(obj_t *op1, obj_t *op2);
-obj_t * times(obj_t *op1, obj_t *op2);
-obj_t * quotient(obj_t *op1, obj_t *op2);
+obj_t * edgar_plus(obj_t *op1, obj_t *op2);
+obj_t * edgar_minus(obj_t *op1, obj_t *op2);
+obj_t * edgar_times(obj_t *op1, obj_t *op2);
+obj_t * edgar_quotient(obj_t *op1, obj_t *op2);
 obj_t * edgar_remainder(obj_t *op1, obj_t *op2);
-int cmp(obj_t *op1, obj_t *op2, char *op_name);
+int edgar_cmp(obj_t *op1, obj_t *op2, char *op_name);
 
 #endif /* __NUMBER_H */

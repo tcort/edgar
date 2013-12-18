@@ -147,7 +147,7 @@ obj_t * func_greater(obj_t *args, obj_t *env) {
 		return alloc_fail();
 	}
 
-	r = cmp(CAR(args), CADR(args), "GREATER");
+	r = edgar_cmp(CAR(args), CADR(args), "GREATER");
 	if (r == 77) {
 		return alloc_fail();
 	} else if (r > 0) {
@@ -180,7 +180,7 @@ obj_t * func_less(obj_t *args, obj_t *env) {
 		return alloc_fail();
 	}
 
-	r = cmp(CAR(args), CADR(args), "LESS");
+	r = edgar_cmp(CAR(args), CADR(args), "LESS");
 	if (r == 77) {
 		return alloc_fail();
 	} else if (r < 0) {
@@ -218,10 +218,10 @@ obj_t * func_minus(obj_t *args, obj_t *env) {
 	if (list_length(args) == 1) {
 		obj_t *def_val = alloc_atom(strdup("0"));
 
-		result = minus(def_val, CAR(args));
+		result = edgar_minus(def_val, CAR(args));
 		free_obj (def_val);
 	} else {
-		result = func_arith(args, env, minus);
+		result = func_arith(args, env, edgar_minus);
 	}
 
 	return result;
@@ -234,7 +234,7 @@ obj_t * func_plus(obj_t *args, obj_t *env) {
 		return alloc_fail();
 	}
 
-	return func_arith(args, env, plus);
+	return func_arith(args, env, edgar_plus);
 }
 
 obj_t * func_quotient(obj_t *args, obj_t *env) {
@@ -249,10 +249,10 @@ obj_t * func_quotient(obj_t *args, obj_t *env) {
 	if (list_length(args) == 1) {
 		obj_t *def_val = alloc_atom(strdup("1"));
 
-		result = quotient(def_val, CAR(args));
+		result = edgar_quotient(def_val, CAR(args));
 		free_obj (def_val);
 	} else {
-		result = func_arith(args, env, quotient);
+		result = func_arith(args, env, edgar_quotient);
 	}
 
 	return result;
@@ -293,7 +293,7 @@ obj_t * func_times(obj_t *args, obj_t *env) {
 		return alloc_fail();
 	}
 
-	return func_arith(args, env, times);
+	return func_arith(args, env, edgar_times);
 }
 
 obj_t * func_if(obj_t *args, obj_t *env) {
