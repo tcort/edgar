@@ -17,13 +17,11 @@ programs like factorial, fibonacci, GCD, LCM, and more.
 
 Standard autotools build (`make check` runs the test suite):
 
-    $ autoreconf -i
+    $ ./autogen
     $ ./configure --prefix=/usr
     $ make
     $ make check
     # make install
-
-Note: `autoreconf -i` is only needed if there is no configure script.
 
 ## Contributing
 
