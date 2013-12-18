@@ -20,6 +20,7 @@
 #define _POSIX_SOURCE
 
 #include <assert.h>
+#include <errno.h>
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -87,6 +88,7 @@ static void print_version(void) {
 int main(int argc, char *argv[]) {
 
 	FILE *f;
+	int rc;
 	int optc;
 	char *lib;
 	obj_t *env;
@@ -131,7 +133,7 @@ int main(int argc, char *argv[]) {
 	if (optind + 1 == argc) {
 		f = fopen(argv[optind], "r");
 		if (f == NULL) {
-			fprintf(stdout, "File Error: %s\n", argv[optind]);
+			fprintf(stdout, "File Error: %s: %s\n", argv[optind], strerror(errno));
 			free_env(env);
 			return 1;
 		}
@@ -144,7 +146,14 @@ int main(int argc, char *argv[]) {
 
 	if (lib != NULL) {
 
-		load_file(lib, env);
+		rc = load_file(lib, env);
+		if (rc == -1) {
+			fprintf(stderr, "File Error: %s: %s\n", lib, strerror(errno));
+			free_env(env);
+			fclose(f);
+			return 1;
+		}
+
 		if (is_interfactive(f)) {
 			print_defunc_names(env);
 			fprintf(stdout, "\n");
