@@ -5,7 +5,14 @@ complier:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq libgmp-dev valgrind clang
+  - sudo apt-get install -qq libgmp-dev valgrind clang cppcheck
 
-before_script: autoreconf -i
-script: "scan-build ./configure && scan-build make && scan-build make distcheck"
+before_script:
+  - ./autogen
+  - cppcheck -I. --error-exitcode=1 src/*.c
+
+script:
+  - scan-build ./configure
+  - scan-build make
+  - scan-build make check
+  - scan-build make distcheck
