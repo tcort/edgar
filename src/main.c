@@ -89,7 +89,6 @@ static void print_version(void) {
 int main(int argc, char *argv[]) {
 
 	FILE *f;
-	int rc;
 	int optc;
 	char *lib;
 	obj_t *env;
@@ -147,7 +146,7 @@ int main(int argc, char *argv[]) {
 
 	if (lib != NULL) {
 
-		rc = load_file(lib, env);
+		int rc = load_file(lib, env);
 		if (rc == -1) {
 			fprintf(stderr, "File Error: %s: %s\n", lib, strerror(errno));
 			free_env(env);

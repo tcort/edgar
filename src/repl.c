@@ -53,10 +53,10 @@ int is_interfactive(FILE *f) {
 
 void repl(FILE *f, obj_t * env, int silent) {
 
-	obj_t * in;
-	obj_t * out;
-
 	do {
+		obj_t * in;
+		obj_t * out;
+
 		if (is_interfactive(f)) {
 			fprintf(stdout, "%s", REPL_PROMPT);
 			fflush(stdout);

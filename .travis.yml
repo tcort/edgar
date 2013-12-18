@@ -9,10 +9,10 @@ before_install:
 
 before_script:
   - ./autogen
-  - cppcheck -I. --error-exitcode=1 src/*.c
 
 script:
   - scan-build ./configure
   - scan-build make
   - scan-build make check
   - scan-build make distcheck
+  - cppcheck -I. --enable=all --error-exitcode=1 --quiet src/*.c

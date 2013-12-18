@@ -134,9 +134,9 @@ obj_t * alloc_defunc(char *name, obj_t *args, obj_t *body) {
 
 void replace_obj(obj_t *replace, obj_t *with, obj_t *exp) {
 
-	obj_t * r;
-	
 	if (IS_LIST(exp)) {
+
+		obj_t * r;
 
 		r = compare_obj(replace, CAR(exp));
 		if (IS_T(r)) {

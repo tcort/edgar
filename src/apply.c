@@ -35,9 +35,7 @@ obj_t * apply(obj_t *args, obj_t *env) {
 		return (FUNC(CAR(CAR(args))))(CDR(args), env);
 	} else if (IS_LIST(CAR(args)) && IS_DEFUNC(CAR(CAR(args)))) {
 
-		obj_t * func_arg;
 		obj_t * func_args;
-		obj_t * call_arg;
 		obj_t * call_args;
 
 		obj_t * body;
@@ -50,8 +48,8 @@ obj_t * apply(obj_t *args, obj_t *env) {
 		/* ((<DEFUNC:[args=(X)][body=(TIMES X X)]>) 3) */
 
 		while (IS_LIST(func_args) && IS_LIST(call_args)) {
-			func_arg = CAR(func_args);
-			call_arg = CAR(call_args);
+			obj_t * func_arg = CAR(func_args);
+			obj_t * call_arg = CAR(call_args);
 
 			replace_obj(func_arg, call_arg, body);
 

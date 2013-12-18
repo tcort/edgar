@@ -35,13 +35,12 @@ obj_t * number_filter(obj_t * o) {
 	if (IS_INT(o)) {
 
 		char *s;
-		char *tmp;
 
 		s = ATOM(o);
 
 		/* gmp doesn't like leading '+' */
 		if (s[0] == '+') {
-			tmp = strdup(s+1);
+			char *tmp = strdup(s+1);
 			memcpy(s, tmp, strlen(tmp) + 1);
 			free(tmp);
 		}

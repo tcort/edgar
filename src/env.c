@@ -113,19 +113,15 @@ obj_t * query_env(obj_t *env, obj_t *o) {
 
 	obj_t *cur;
 
-	obj_t *item;
-	obj_t *key;
-	obj_t *value;
-
 	assert(IS_LIST(env));
 	assert(IS_ATOM(o));
 
 	cur = env;
 	while (IS_LIST(cur) && IS_LIST(CAR(cur))) {
 
-		item = CAR(cur);
-		key = CAR(item);
-		value = CDR(item);
+		obj_t *item = CAR(cur);
+		obj_t *key = CAR(item);
+		obj_t *value = CDR(item);
 
 		if (strcmp(ATOM(key), ATOM(o)) == 0 && strlen(ATOM(key)) ==
 				strlen(ATOM(o))) {
@@ -145,10 +141,6 @@ void print_func_names(obj_t *env) {
 	int i;
 	obj_t *cur;
 
-	obj_t *item;
-	obj_t *key;
-	obj_t *value;
-
 	assert(IS_LIST(env));
 
 	cur = env;
@@ -157,9 +149,9 @@ void print_func_names(obj_t *env) {
 	fprintf(stdout, "Built-in Functions:\nDEFUN QUOTE");
 	while (IS_LIST(cur) && IS_LIST(CAR(cur))) {
 
-		item = CAR(cur);
-		key = CAR(item);
-		value = CDR(item);
+		obj_t *item = CAR(cur);
+		obj_t *key = CAR(item);
+		obj_t *value = CDR(item);
 
 		if (IS_ATOM(key) && IS_FUNC(CAR(value))) {
 			if (i > 32) {
@@ -184,10 +176,6 @@ void print_defunc_names(obj_t *env) {
 	int first;
 	obj_t *cur;
 
-	obj_t *item;
-	obj_t *key;
-	obj_t *value;
-
 	assert(IS_LIST(env));
 
 	cur = env;
@@ -196,9 +184,9 @@ void print_defunc_names(obj_t *env) {
 	fprintf(stdout, "Library Functions:\n");
 	while (IS_LIST(cur) && IS_LIST(CAR(cur))) {
 
-		item = CAR(cur);
-		key = CAR(item);
-		value = CDR(item);
+		obj_t *item = CAR(cur);
+		obj_t *key = CAR(item);
+		obj_t *value = CDR(item);
 
 		if (IS_ATOM(key) && IS_DEFUNC(CAR(value))) {
 			if (i > 32) {

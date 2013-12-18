@@ -33,11 +33,7 @@
  */
 obj_t * eval(obj_t * exp, obj_t *env) {
 
-	obj_t *r;
-	obj_t *tmp;
 	obj_t *cur;
-	obj_t *args;
-	obj_t *defunc;
 
 	if (IS_STR(exp)) {
 
@@ -64,6 +60,11 @@ obj_t * eval(obj_t * exp, obj_t *env) {
 			return q;
 		}
 	} else if (IS_LIST(exp)) {
+
+		obj_t *r;
+		obj_t *defunc;
+		obj_t *tmp;
+		obj_t *args;
 
 		/* QUOTE is special, we don't eval() the args */
 		if (strcmp(ATOM(CAR(exp)), "QUOTE") == 0) {
