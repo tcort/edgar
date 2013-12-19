@@ -21,6 +21,7 @@ src/Makefile
 src/Makefile.in
 src/*.o
 src/edgar
+src/libedgar.a
 stamp-h1
 test-driver
 tests/*.out
