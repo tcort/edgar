@@ -45,18 +45,8 @@ SHELL_TESTS = \
 
 check_PROGRAMS = unittests
 
-unittests_SOURCES = test.h unittests.c \
-	$(top_srcdir)/src/apply.c	$(top_srcdir)/src/apply.h	\
-					$(top_srcdir)/src/const.h	\
-	$(top_srcdir)/src/env.c		$(top_srcdir)/src/env.h		\
-	$(top_srcdir)/src/eval.c	$(top_srcdir)/src/eval.h	\
-	$(top_srcdir)/src/fileio.c	$(top_srcdir)/src/fileio.h	\
-	$(top_srcdir)/src/builtin.c	$(top_srcdir)/src/builtin.h	\
-	$(top_srcdir)/src/number.c	$(top_srcdir)/src/number.h	\
-	$(top_srcdir)/src/obj.c		$(top_srcdir)/src/obj.h		\
-	$(top_srcdir)/src/parser.c	$(top_srcdir)/src/parser.h	\
-	$(top_srcdir)/src/repl.c	$(top_srcdir)/src/repl.h	\
-	$(top_srcdir)/src/scanner.c	$(top_srcdir)/src/scanner.h
+unittests_SOURCES = test.h unittests.c
+unittests_LDADD = $(top_builddir)/src/libedgar.a
 
 TESTS = \
 	$(check_PROGRAMS) \

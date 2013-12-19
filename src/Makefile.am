@@ -18,16 +18,20 @@ AM_CPPFLAGS = -Wall -Wextra -pedantic -O2
 
 bin_PROGRAMS = edgar
 
-edgar_SOURCES = \
+noinst_LIBRARIES = libedgar.a
+libedgar_a_SOURCES = \
 	apply.c			apply.h			\
 				const.h			\
 	env.c			env.h			\
 	eval.c			eval.h			\
 	fileio.c		fileio.h		\
 	builtin.c		builtin.h		\
-	main.c						\
 	number.c		number.h		\
 	obj.c			obj.h			\
 	parser.c		parser.h		\
 	repl.c			repl.h			\
 	scanner.c 		scanner.h
+
+edgar_SOURCES = \
+	main.c
+edgar_LDADD = libedgar.a

@@ -25,6 +25,8 @@ dnl Standard C Checks
 dnl
 AC_LANG([C])
 AC_PROG_CC()
+AC_PROG_RANLIB
+AM_PROG_AR
 
 dnl
 dnl Standard Header Checks
