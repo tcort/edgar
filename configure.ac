@@ -1,5 +1,5 @@
 dnl edgar - a small LISP Interpreter written in C
-dnl Copyright (c) 2013 Thomas Cort <linuxgeek@gmail.com>
+dnl Copyright (c) 2013, 2014 Thomas Cort <linuxgeek@gmail.com>
 dnl
 dnl This program is free software: you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by
@@ -15,8 +15,8 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 dnl don't forget to update the man page version when bumping this version.
-AC_INIT([edgar], [1.0], [Thomas Cort <linuxgeek@gmail.com>])
-AC_COPYRIGHT([Copyright (C) 2013 Thomas Cort <linuxgeek@gmail.com>])
+AC_INIT([edgar], [2.0], [Thomas Cort <linuxgeek@gmail.com>])
+AC_COPYRIGHT([Copyright (C) 2013, 2014 Thomas Cort <linuxgeek@gmail.com>])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 AM_SILENT_RULES([yes])
 
