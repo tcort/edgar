@@ -57,7 +57,7 @@ token_t *scanner_next_token(FILE *f) {
 
 	int c;
 	int pos;
-	char buf[MAX_ATOM_LEN];
+	char buf[MAX_ATOM_LEN+1];
 
 	memset(buf, '\0', MAX_ATOM_LEN);
 	while ((c = getc(f)) != EOF) {
