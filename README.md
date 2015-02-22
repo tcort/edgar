@@ -18,7 +18,6 @@ programs like factorial, fibonacci, GCD, LCM, and more.
 
 Standard autotools build (`make check` runs the test suite):
 
-    $ ./autogen
     $ ./configure --prefix=/usr
     $ make
     $ make check
