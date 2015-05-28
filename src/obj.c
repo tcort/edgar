@@ -320,8 +320,9 @@ void append_obj(obj_t *list, obj_t *o) {
 		return;
 	}
 
-	for (cur = list; !(IS_NIL(CDR(cur))); cur = CDR(cur)) {
-		/* find end of list */;
+	cur = list; /* find end of list */
+	while (!IS_NIL(CDR(cur))) {
+		cur = CDR(cur);
 	}
 
 	free_obj(CDR(cur));

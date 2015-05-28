@@ -110,7 +110,7 @@ token_t *scanner_next_token(FILE *f) {
 								break;
 						}
 					}
-					buf[pos] = c;
+					buf[pos] = (char) c;
 				}
 				buf[MAX_ATOM_LEN - 1] = '\0';
 				return alloc_token(STRING_T, strdup(buf));
@@ -119,7 +119,7 @@ token_t *scanner_next_token(FILE *f) {
 				ungetc(c, f);
 				for (pos = 0; pos < MAX_ATOM_LEN; pos++) {
 
-					buf[pos] = getc(f);
+					buf[pos] = (char) getc(f);
 
 					if (feof(f)) {
 						break;
@@ -137,7 +137,7 @@ token_t *scanner_next_token(FILE *f) {
 						break;
 					}
 
-					buf[pos] = toupper(buf[pos]);
+					buf[pos] = (char) toupper(buf[pos]);
 				}
 
 				/* remove delimiter from buffer, ensure EOS */
