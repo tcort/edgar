@@ -1,6 +1,6 @@
 /*
  * edgar - a small LISP Interpreter written in C
- * Copyright (c) 2013, 2014, 2015 Thomas Cort <linuxgeek@gmail.com>
+ * Copyright (c) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,9 +17,6 @@
  */
 
 #include "config.h"
-
-#define _XOPEN_SOURCE
-#define _POSIX_SOURCE
 
 #include <assert.h>
 #include <errno.h>
@@ -48,7 +45,7 @@ static void splash(obj_t * env) {
 	fprintf(stdout, "   \\___|\\__,_|\\__, |\\__,_|_|     \n");
 	fprintf(stdout, "              |___/              \n");
 	fprintf(stdout, "\n");
-	fprintf(stdout, "           Version %s\n", VERSION);
+	fprintf(stdout, "           Version %s\n", PROJECT_VERSION);
 	fprintf(stdout,"\n");
 	print_func_names(env);
 	fprintf(stdout, "\n");
@@ -56,7 +53,7 @@ static void splash(obj_t * env) {
 
 void print_help(char *progname) {
 
-	fprintf(stdout, "%s - a small LISP Interpreter written in C\n", PACKAGE_NAME);
+	fprintf(stdout, "%s - a small LISP Interpreter written in C\n", PROJECT_NAME);
 	fprintf(stdout, "\n");
 	fprintf(stdout, "Usage: %s [OPTION] [filename]\n", progname);
 	fprintf(stdout, "\n");
@@ -65,16 +62,16 @@ void print_help(char *progname) {
 	fprintf(stdout, " -l file.lisp      --lib file.lisp         Load a library\n");
 	fprintf(stdout, " -v                --version               Print version information and exit\n");
 	fprintf(stdout, "\n");
-	fprintf(stdout, "Report bugs to %s\n", PACKAGE_BUGREPORT);
+	fprintf(stdout, "Report bugs to %s\n", PROJECT_BUG_TRACKER);
 
 	exit(0);
 }
 
 static void print_version(void) {
 
-	fprintf(stdout, "%s\n", PACKAGE_STRING);
+	fprintf(stdout, "%s\n", PROJECT_STRING);
 	fprintf(stdout, "\n");
-	fprintf(stdout, "Copyright (C) 2013, 2014, 2015 Thomas Cort <linuxgeek@gmail.com>\n");
+	fprintf(stdout, "Copyright (C) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>\n");
 	fprintf(stdout, "This is free software; see the source for copying conditions.  There is NO\n");
 	fprintf(stdout, "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n");
 	fprintf(stdout, "\n");
@@ -94,22 +91,16 @@ int main(int argc, char *argv[]) {
 	obj_t *env;
 
 	const char* const short_options = "h?l:v";
-#if HAVE_GETOPT_LONG
 	static const struct option long_options[] = {
 		{"help", no_argument, NULL, 'h'},
 		{"lib", required_argument, NULL, 'l'},
 		{"version", no_argument, NULL, 'v'},
 		{NULL, 0, NULL, 0}
 	};
-#endif
 
 	lib = NULL;
 
-#if HAVE_GETOPT_LONG
 	while ((optc = getopt_long(argc, argv, short_options, long_options, NULL)) != -1) {
-#else
-	while ((optc = getopt(argc, argv, short_options)) != -1) {
-#endif
 		switch (optc) {
 			case 'v':
 				print_version();

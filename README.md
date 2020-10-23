@@ -1,5 +1,4 @@
 # edgar
-[![Build Status](https://api.travis-ci.org/tcort/edgar.png?branch=master)](http://travis-ci.org/tcort/edgar)
 
 edgar is a small LISP Interpreter written in C. It doesn't have a lot of
 built-in functions yet, but it is already quite functional. It allows users
@@ -9,18 +8,17 @@ programs like factorial, fibonacci, GCD, LCM, and more.
 ## Requirements
 
 * C compiler and standard build tools (make, sh, ...).
+* [cmake](https://cmake.org/)
 * [GNU MP](http://gmplib.org/)
-* [valgrind](http://valgrind.org/) (optional - adds memory error/leak checks)
-* [cppcheck](http://cppcheck.sourceforge.net/) (optional - adds static analysis checks)
-* [wine](http://www.winehq.org/) (optional - runs tests on mingw32 cross builds)
 
 ## Building
 
-Standard autotools build (`make check` runs the test suite):
+Standard cmake build (`make test` runs the test suite):
 
-    $ ./configure --prefix=/usr
+    $ cd bin
+    $ cmake ..
     $ make
-    $ make check
+    $ make test
     # make install
 
 ## Contributing

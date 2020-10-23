@@ -1,0 +1,11 @@
+#ifndef __CONFIG_H
+#define __CONFIG_H
+
+#define PROJECT_NAME "@PROJECT_NAME@"
+#define PROJECT_VERSION "@PROJECT_VERSION@"
+#define PROJECT_STRING "@PROJECT_NAME@ @PROJECT_VERSION@"
+#define PROJECT_BUG_TRACKER "https://github.com/tcort/edgar/issues"
+
+#define _DEFAULT_SOURCE
+
+#endif

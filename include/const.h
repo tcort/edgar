@@ -1,6 +1,6 @@
 /*
  * edgar - a small LISP Interpreter written in C
- * Copyright (c) 2013, 2014, 2015 Thomas Cort <linuxgeek@gmail.com>
+ * Copyright (c) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,12 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __REPL_H
-#define __REPL_H
+#ifndef __CONST_H
+#define __CONST_H
 
-#include <stdio.h>
+#define REPL_PROMPT "> "
+#define MAX_ATOM_LEN 1024
 
-int is_interfactive(FILE *f);
-void repl(FILE *f, obj_t * env, int silent);
-
-#endif /* __REPL_H */
+#endif /* __CONST_H */

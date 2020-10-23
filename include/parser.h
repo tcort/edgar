@@ -1,6 +1,6 @@
 /*
  * edgar - a small LISP Interpreter written in C
- * Copyright (c) 2013, 2014, 2015 Thomas Cort <linuxgeek@gmail.com>
+ * Copyright (c) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,11 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __FILEIO_H
-#define __FILEIO_H
+#ifndef __PARSER_H
+#define __PARSER_H
 
+#include <stdio.h>
 #include "obj.h"
 
-int load_file(char *filename, obj_t * env);
+obj_t *parse(FILE *f);
 
-#endif /* __FILEIO_H */
+#endif /* __PARSER_H */

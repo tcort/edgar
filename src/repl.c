@@ -1,6 +1,6 @@
 /*
  * edgar - a small LISP Interpreter written in C
- * Copyright (c) 2013, 2014, 2015 Thomas Cort <linuxgeek@gmail.com>
+ * Copyright (c) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,9 +17,6 @@
  */
 
 #include "config.h"
-
-#define _XOPEN_SOURCE
-#define _POSIX_SOURCE
 
 #include <assert.h>
 #include <getopt.h>

@@ -1,6 +1,6 @@
 /*
  * edgar - a small LISP Interpreter written in C
- * Copyright (c) 2013, 2014, 2015 Thomas Cort <linuxgeek@gmail.com>
+ * Copyright (c) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,18 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __ENV_H
-#define __ENV_H
+#ifndef __APPLY_H
+#define __APPLY_H
 
 #include "obj.h"
 
-obj_t * alloc_env(void);
-int insert_env(obj_t *env, obj_t *o);
-obj_t * query_env(obj_t *env, obj_t *o);
-void free_env(obj_t *env);
-void print_func_names(obj_t *env);
-void print_defunc_names(obj_t *env);
+obj_t * apply(obj_t *args, obj_t *env);
 
-int add_to_env(obj_t *key, obj_t *value, obj_t *env);
-
-#endif /* __ENV_H */
+#endif /* __APPLY_H */

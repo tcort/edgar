@@ -7,17 +7,13 @@ addons:
   apt:
     packages:
     - libgmp-dev
-    - valgrind
     - clang
-    - cppcheck
+    - cmake
 
-before_script:
-  - ./autogen
 
 script:
-  - scan-build ./configure
-  - scan-build make
-  - scan-build make check
-  - scan-build make distcheck
+  - cd bin && cmake ..
+  - make
+  - make test
 
 sudo: false

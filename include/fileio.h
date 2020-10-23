@@ -1,6 +1,6 @@
 /*
  * edgar - a small LISP Interpreter written in C
- * Copyright (c) 2013, 2014, 2015 Thomas Cort <linuxgeek@gmail.com>
+ * Copyright (c) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,17 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __SCANNER_H
-#define __SCANNER_H
+#ifndef __FILEIO_H
+#define __FILEIO_H
 
-#include <stdio.h>
+#include "obj.h"
 
-typedef struct token {
-	enum token_types { OPAREN_T, CPAREN_T, STRING_T, ATOM_T} token_type;
-	char *text;
-} token_t;
+int load_file(char *filename, obj_t * env);
 
-void free_token(token_t *token);
-token_t *scanner_next_token(FILE *f);
-
-#endif /* __SCANNER_H */
+#endif /* __FILEIO_H */

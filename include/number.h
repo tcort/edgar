@@ -1,6 +1,6 @@
 /*
  * edgar - a small LISP Interpreter written in C
- * Copyright (c) 2013, 2014, 2015 Thomas Cort <linuxgeek@gmail.com>
+ * Copyright (c) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,10 +16,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __CONST_H
-#define __CONST_H
+#ifndef __NUMBER_H
+#define __NUMBER_H
 
-#define REPL_PROMPT "> "
-#define MAX_ATOM_LEN 1024
+#include "obj.h"
 
-#endif /* __CONST_H */
+obj_t * number_filter(obj_t * o);
+
+int is_int_obj(obj_t *o);
+
+obj_t * edgar_plus(obj_t *op1, obj_t *op2);
+obj_t * edgar_minus(obj_t *op1, obj_t *op2);
+obj_t * edgar_times(obj_t *op1, obj_t *op2);
+obj_t * edgar_quotient(obj_t *op1, obj_t *op2);
+obj_t * edgar_remainder(obj_t *op1, obj_t *op2);
+int edgar_cmp(obj_t *op1, obj_t *op2, char *op_name);
+
+#endif /* __NUMBER_H */
