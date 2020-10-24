@@ -43,7 +43,7 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/examples DESTINATION share/${PROJECT_NAM
 include(CTest)
 enable_testing()
 
-set (functional_tests "atom" "car" "cdr" "cond" "cons" "defun" "equal" "greater" "if" "int" "less" "libedgar" "minus" "misc" "plus" "print" "quote" "quotient" "regression-apply-leak" "regression-setq-str" "remainder" "setq" "times")
+set (functional_tests "atom" "car" "cdr" "cond" "cons" "defun" "equal" "greater" "if" "int" "less" "libedgar" "micromanual" "minus" "misc" "plus" "print" "quote" "quotient" "regression-apply-leak" "regression-setq-str" "remainder" "setq" "times")
 
 foreach(test ${functional_tests})
     add_test(NAME ${test}_test COMMAND sh -c "${PROJECT_BINARY_DIR}/${PROJECT_NAME} -l ${PROJECT_SOURCE_DIR}/lib/edgar.lisp ${PROJECT_SOURCE_DIR}/tests/${test}.in > ${PROJECT_BINARY_DIR}/tests_${test}.out")
