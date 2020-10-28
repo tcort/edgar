@@ -31,6 +31,7 @@
 #include "fileio.h"
 #include "obj.h"
 #include "parser.h"
+#include "prelude.h"
 #include "repl.h"
 
 static void splash(obj_t * env);
@@ -135,6 +136,16 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
+	if (1) {
+		int rc = load_prelude(env);
+		if (rc == -1) {
+			fprintf(stderr, "Prelude Error: %s: %s\n", lib, strerror(errno));
+			free_env(env);
+			fclose(f);
+			return 1;
+		}
+	}
+
 	if (lib != NULL) {
 
 		int rc = load_file(lib, env);
@@ -145,10 +156,11 @@ int main(int argc, char *argv[]) {
 			return 1;
 		}
 
-		if (is_interfactive(f)) {
-			print_defunc_names(env);
-			fprintf(stdout, "\n");
-		}
+	}
+
+	if (is_interfactive(f)) {
+		print_defunc_names(env);
+		fprintf(stdout, "\n");
 	}
 
 	repl(f, env, 0);

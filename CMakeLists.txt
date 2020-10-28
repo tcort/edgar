@@ -37,7 +37,6 @@ target_link_libraries(edgar gmp)
 
 install(TARGETS edgar DESTINATION bin)
 install(FILES ${PROJECT_SOURCE_DIR}/man/edgar.1 DESTINATION man/man1)
-install(FILES ${PROJECT_SOURCE_DIR}/lib/edgar.lisp DESTINATION share/${PROJECT_NAME})
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/examples DESTINATION share/${PROJECT_NAME})
 
 include(CTest)
@@ -46,7 +45,7 @@ enable_testing()
 set (functional_tests "atom" "car" "cdr" "cond" "cons" "defun" "equal" "greater" "if" "int" "less" "libedgar" "micromanual" "minus" "misc" "plus" "print" "quote" "quotient" "regression-apply-leak" "regression-setq-str" "remainder" "setq" "times")
 
 foreach(test ${functional_tests})
-    add_test(NAME ${test}_test COMMAND sh -c "${PROJECT_BINARY_DIR}/${PROJECT_NAME} -l ${PROJECT_SOURCE_DIR}/lib/edgar.lisp ${PROJECT_SOURCE_DIR}/tests/${test}.in > ${PROJECT_BINARY_DIR}/tests_${test}.out")
+    add_test(NAME ${test}_test COMMAND sh -c "${PROJECT_BINARY_DIR}/${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/tests/${test}.in > ${PROJECT_BINARY_DIR}/tests_${test}.out")
     add_test(NAME ${test}_chck COMMAND ${CMAKE_COMMAND} -E compare_files "${PROJECT_SOURCE_DIR}/tests/${test}.ex" "${PROJECT_BINARY_DIR}/tests_${test}.out")
 endforeach()
 
