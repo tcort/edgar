@@ -60,22 +60,31 @@ obj_t * alloc_env(void) {
 
 	env = alloc_list(alloc_fail(), alloc_nil());
 
-	add_func_to_env("SETQ", func_setq, env);
-	add_func_to_env("CAR", func_car, env);
-	add_func_to_env("CDR", func_cdr, env);
-	add_func_to_env("CONS", func_cons, env);
-	add_func_to_env("EQUAL", func_equal, env);
-	add_func_to_env("LESS", func_less, env);
-	add_func_to_env("GREATER", func_greater, env);
-	add_func_to_env("ATOM", func_atom, env);
-	add_func_to_env("INT", func_int, env);
-	add_func_to_env("COND", func_cond, env);
 	add_func_to_env("PLUS", func_plus, env);
 	add_func_to_env("MINUS", func_minus, env);
 	add_func_to_env("TIMES", func_times, env);
 	add_func_to_env("QUOTIENT", func_quotient, env);
 	add_func_to_env("REMAINDER", func_remainder, env);
+
+	add_func_to_env("+", func_plus, env);
+	add_func_to_env("-", func_minus, env);
+	add_func_to_env("*", func_times, env);
+	add_func_to_env("/", func_quotient, env);
+	add_func_to_env("%", func_remainder, env);
+
+	add_func_to_env("EQUAL", func_equal, env);
+	add_func_to_env("LESS", func_less, env);
+	add_func_to_env("GREATER", func_greater, env);
+
+	add_func_to_env("COND", func_cond, env);
 	add_func_to_env("IF", func_if, env);
+
+	add_func_to_env("SETQ", func_setq, env);
+	add_func_to_env("CAR", func_car, env);
+	add_func_to_env("CDR", func_cdr, env);
+	add_func_to_env("CONS", func_cons, env);
+	add_func_to_env("ATOM", func_atom, env);
+	add_func_to_env("INT", func_int, env);
 	add_func_to_env("PRINT", func_print, env);
 
 	return env;
