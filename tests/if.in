@@ -13,7 +13,7 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(IF (EQUAL 1 1) 10 20)
-(IF (EQUAL 1 2) 10 20)
-(IF (EQUAL (LENGTH (QUOTE (1 2 3))) 3) 10 20)
-(IF (EQUAL (LENGTH (QUOTE (1 2 3))) 4) 10 20)
+(PRINT (IF (EQUAL 1 1) 10 20))
+(PRINT (IF (EQUAL 1 2) 10 20))
+(PRINT (IF (EQUAL (LENGTH (QUOTE (1 2 3))) 3) 10 20))
+(PRINT (IF (EQUAL (LENGTH (QUOTE (1 2 3))) 4) 10 20))

@@ -13,10 +13,10 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(CDR (QUOTE (A B C)))
-(CDR (QUOTE (A B)) (QUOTE (A B)))
-(CDR)
-(CDR T)
-(CDR (QUOTE (A)))
-(CDR (QUOTE (A B)))
-(CDR (QUOTE ((A B))))
+(PRINT (CDR (QUOTE (A B C))))
+(PRINT (CDR (QUOTE (A B)) (QUOTE (A B))))
+(PRINT (CDR))
+(PRINT (CDR T))
+(PRINT (CDR (QUOTE (A))))
+(PRINT (CDR (QUOTE (A B))))
+(PRINT (CDR (QUOTE ((A B)))))

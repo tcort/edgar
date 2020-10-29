@@ -121,6 +121,8 @@ obj_t * eval(obj_t * exp, obj_t *env) {
 			}
 		} else if (strcmp(ATOM(CAR(exp)), "COND") == 0) {
 			return func_cond(CDR(exp), env);
+		} else if (strcmp(ATOM(CAR(exp)), "IF") == 0) {
+			return func_if(CDR(exp), env);
 		} else if (strcmp(ATOM(CAR(exp)), "SETQ") == 0) {
 			return func_setq(CDR(exp), env);
 		}

@@ -13,9 +13,9 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(CAR (QUOTE (A B C)))
-(CAR (QUOTE (A B)) (QUOTE (A B)))
-(CAR)
-(CAR T)
-(CAR (QUOTE (A B)))
-(CAR (QUOTE ((A B))))
+(PRINT (CAR (QUOTE (A B C))))
+(PRINT (CAR (QUOTE (A B)) (QUOTE (A B))))
+(PRINT (CAR))
+(PRINT (CAR T))
+(PRINT (CAR (QUOTE (A B))))
+(PRINT (CAR (QUOTE ((A B)))))

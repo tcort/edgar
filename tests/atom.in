@@ -13,9 +13,9 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(ATOM (QUOTE A))
-(ATOM (QUOTE (A B)))
-(ATOM NIL)
-(ATOM)
-(ATOM (QUOTE A) (QUOTE A))
-(ATOM "ATOM")
+(PRINT (ATOM (QUOTE A)))
+(PRINT (ATOM (QUOTE (A B))))
+(PRINT (ATOM NIL))
+(PRINT (ATOM))
+(PRINT (ATOM (QUOTE A) (QUOTE A)))
+(PRINT (ATOM "ATOM"))

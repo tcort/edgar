@@ -19,10 +19,9 @@
 ; The factorial function is the product of N * N-1 * N-2 * ... * 1.
 ; Thus, (FACTORIAL 5) = 5*4*3*2*1 = 120
 (DEFUN FACTORIAL (N)
-       (COND ((EQUAL N 1)
-	      	1)
-	     (T
-	      	(TIMES N (FACTORIAL (MINUS N 1))))))
+       (IF (EQUAL N 1)
+	      	1
+	      	(TIMES N (FACTORIAL (MINUS N 1)))))
 
 
-(FACTORIAL 5)
+(PRINT (FACTORIAL 5))

@@ -131,7 +131,7 @@ int main(int argc, char *argv[]) {
 		}
 	} else {
 		f = stdin;
-		if (is_interfactive(f)) {
+		if (is_interactive(f)) {
 			splash(env);
 		}
 	}
@@ -158,12 +158,12 @@ int main(int argc, char *argv[]) {
 
 	}
 
-	if (is_interfactive(f)) {
+	if (is_interactive(f)) {
 		print_defunc_names(env);
 		fprintf(stdout, "\n");
 	}
 
-	repl(f, env, 0);
+	repl(f, env, !is_interactive(f));
 
 	fclose(f);
 

@@ -17,12 +17,11 @@
 
 
 ; Absolute Value Function
-(DEFUN ABS (X)
-       (COND
-	 	((LESS X 0)
-	  		(MINUS 0 X))
-		(T
-		 	X)))
+(DEFUN ABSOLUTE (X)
+	(IF
+		(LESS X 0)
+	  		(MINUS 0 X)
+		 	X))
 
-(ABS 23)
-(ABS -23)
+(PRINT (ABSOLUTE 23))
+(PRINT (ABSOLUTE -23))

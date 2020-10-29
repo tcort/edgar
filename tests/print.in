@@ -17,7 +17,7 @@
 (PRINT "foo")
 (PRINT (QUOTE (1 2 3)))
 (PRINT (CAR (QUOTE (A B C))))
-(SETQ A 42)
+(PRINT (SETQ A 42))
 (PRINT A)
 (PRINT "Hello World!")
 (PRINT "\"Hello, World!\"")

@@ -37,7 +37,7 @@
  * we're reading from a file or pipe. This is used to determine if a
  * prompt should be displayed.
  */
-int is_interfactive(FILE *f) {
+int is_interactive(FILE *f) {
 	int fd;
 
 	fd = fileno(f);
@@ -54,7 +54,7 @@ void repl(FILE *f, obj_t * env, int silent) {
 		obj_t * in;
 		obj_t * out;
 
-		if (is_interfactive(f)) {
+		if (is_interactive(f)) {
 			fprintf(stdout, "%s", REPL_PROMPT);
 			fflush(stdout);
 		}

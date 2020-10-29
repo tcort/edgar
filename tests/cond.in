@@ -13,10 +13,10 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(COND ((ATOM T) (QUOTE B)))
-(COND ((ATOM NIL) (QUOTE B)))
-(COND ((ATOM (QUOTE A)) (QUOTE B)))
-(COND ((ATOM (QUOTE (A X))) (QUOTE B)))
-(COND ((QUOTE NIL) (QUOTE B)) ((QUOTE T) (QUOTE C)))
-(COND ((EQUAL 5 5) (QUOTE T)) ((QUOTE T) (PLUS 1 5)))
-(COND ((EQUAL 5 4) (QUOTE T)) ((QUOTE T) (PLUS 1 5)))
+(PRINT (COND ((ATOM T) (QUOTE B))))
+(PRINT (COND ((ATOM NIL) (QUOTE B))))
+(PRINT (COND ((ATOM (QUOTE A)) (QUOTE B))))
+(PRINT (COND ((ATOM (QUOTE (A X))) (QUOTE B))))
+(PRINT (COND ((QUOTE NIL) (QUOTE B)) ((QUOTE T) (QUOTE C))))
+(PRINT (COND ((EQUAL 5 5) (QUOTE T)) ((QUOTE T) (PLUS 1 5))))
+(PRINT (COND ((EQUAL 5 4) (QUOTE T)) ((QUOTE T) (PLUS 1 5))))

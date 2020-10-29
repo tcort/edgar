@@ -30,4 +30,4 @@
 		  (FIB (MINUS N 1))
 		  (FIB (MINUS N 2))))))
 
-(FIB 7)
+(PRINT (FIB 7))

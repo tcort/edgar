@@ -13,13 +13,13 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(SETQ  ABC  (QUOTE  (A  B  C ) ) )
-(SETQ  TWO  2)
-(SETQ  THREE  3)
-(PLUS  TWO  THREE)
-(CONS  TWO  ABC)
-(SETQ )
-(SETQ A B C)
-(SETQ A 3)
-(SETQ A 100)
-(PLUS A 1)
+(PRINT (SETQ  ABC  (QUOTE  (A  B  C ) ) ))
+(PRINT (SETQ  TWO  2))
+(PRINT (SETQ  THREE  3))
+(PRINT (PLUS  TWO  THREE))
+(PRINT (CONS  TWO  ABC))
+(PRINT (SETQ ))
+(PRINT (SETQ A B C))
+(PRINT (SETQ A 3))
+(PRINT (SETQ A 100))
+(PRINT (PLUS A 1))

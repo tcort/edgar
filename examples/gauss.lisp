@@ -19,16 +19,15 @@
 ; Sum the integers from 1 to N.
 ; Use a recursive function which adds N to the sum of 0 to N-1.
 (DEFUN SUM-TO-N (N)
-       (COND
-	 	((LESS N 0)
-	  		0)
-		(T
-		 	(PLUS N (SUM-TO-N (MINUS N 1))))))
+       (IF
+	 	(LESS N 0)
+	  		0
+		 	(PLUS N (SUM-TO-N (MINUS N 1)))))
 
 ; Sum the integers from 1 to N.
 ; Use Gauss' method for summing consecutive integers.
 (DEFUN GAUSS (N)
        (QUOTIENT (TIMES N (PLUS N 1)) 2))
 
-(SUM-TO-N 100)
-(GAUSS 100)
+(PRINT (SUM-TO-N 100))
+(PRINT (GAUSS 100))

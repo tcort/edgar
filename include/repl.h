@@ -21,7 +21,7 @@
 
 #include <stdio.h>
 
-int is_interfactive(FILE *f);
+int is_interactive(FILE *f);
 void repl(FILE *f, obj_t * env, int silent);
 
 #endif /* __REPL_H */

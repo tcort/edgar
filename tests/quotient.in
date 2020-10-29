@@ -13,13 +13,13 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(QUOTIENT 100 5)
-(QUOTIENT 100 5 10)
-(QUOTIENT 3)
-(QUOTIENT 0)
-(QUOTIENT 21 7)
-(QUOTIENT 21 0)
-(QUOTIENT)
-(QUOTIENT 49 7)
-(QUOTIENT 1 1)
-(QUOTIENT -0 1)
+(PRINT (QUOTIENT 100 5))
+(PRINT (QUOTIENT 100 5 10))
+(PRINT (QUOTIENT 3))
+(PRINT (QUOTIENT 0))
+(PRINT (QUOTIENT 21 7))
+(PRINT (QUOTIENT 21 0))
+(PRINT (QUOTIENT))
+(PRINT (QUOTIENT 49 7))
+(PRINT (QUOTIENT 1 1))
+(PRINT (QUOTIENT -0 1))

@@ -13,5 +13,5 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(DEFUN ADD1 (X) (PLUS 1 X))
-(ADD1 2 3)
+(PRINT (DEFUN ADD1 (X) (PLUS 1 X)))
+(PRINT (ADD1 2 3))

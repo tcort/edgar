@@ -13,11 +13,11 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-(QUOTE A)
-(CAR (QUOTE (A B C)))
-(CDR (QUOTE (A B C)))
-(CONS (QUOTE A) (QUOTE (B C)))
-(EQUAL (CAR (QUOTE (A B))) (QUOTE A))
-(ATOM 42)
-(ATOM (QUOTE (A B C)))
-(COND ((ATOM (QUOTE A)) (QUOTE B)) ((QUOTE T) (QUOTE C)))
+(PRINT (QUOTE A))
+(PRINT (CAR (QUOTE (A B C))))
+(PRINT (CDR (QUOTE (A B C))))
+(PRINT (CONS (QUOTE A) (QUOTE (B C))))
+(PRINT (EQUAL (CAR (QUOTE (A B))) (QUOTE A)))
+(PRINT (ATOM 42))
+(PRINT (ATOM (QUOTE (A B C))))
+(PRINT (COND ((ATOM (QUOTE A)) (QUOTE B)) ((QUOTE T) (QUOTE C))))

@@ -13,14 +13,22 @@
 ;
 ; You should have received a copy of the GNU General Public License
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-
-
-; Find the Greatest Common Divisor of 2 numbers
-(DEFUN GCD (X Y)
-       (COND
-	 	((EQUAL Y 0) X)
-		(T (GCD Y (REMAINDER X Y)))))
-
-(GCD 100 625)
-
+(PRINT (LCM 3 4))
+(PRINT (1+ 6))
+(PRINT (1- 6))
+(PRINT (ZEROP 0))
+(PRINT (ZEROP -1))
+(PRINT (ZEROP 1))
+(PRINT (ABS 23))
+(PRINT (ABS -23))
+(PRINT (GCD 625 50))
+(PRINT (LENGTH (QUOTE (A B C))))
+(PRINT (LENGTH))
+(PRINT (LENGTH (QUOTE A)))
+(PRINT (LENGTH (CDR (QUOTE (A B C)))))
+(PRINT (LENGTH (QUOTE (A B C)) (QUOTE (X Y Z))))
+(PRINT (LENGTH (CONS (QUOTE A) (QUOTE (B C)))))
+(PRINT (GCD 2 6))
+(PRINT (LCM 2 6))
+(PRINT (GCD 1980 1984))
+(PRINT (LCM 1980 1984))

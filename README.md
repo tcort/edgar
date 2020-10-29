@@ -1,9 +1,6 @@
-# edgar
+# The Edgar Programming Language
 
-edgar is a small LISP Interpreter written in C. It doesn't have a lot of
-built-in functions yet, but it is already quite functional. It allows users
-to define functions and supports some of the classic introduction to LISP
-programs like factorial, fibonacci, GCD, LCM, and more. 
+
 
 ## Requirements
 
