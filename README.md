@@ -1,6 +1,6 @@
 # The Edgar Programming Language
 
-
+`edgar(1)` is an interpreter for the edgar programming language.
 
 ## Requirements
 

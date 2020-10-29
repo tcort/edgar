@@ -1,4 +1,4 @@
-; edgar - a small LISP Interpreter written in C
+; edgar - an interpreter for the edgar programming language
 ; Copyright (c) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>
 ;
 ; This program is free software: you can redistribute it and/or modify

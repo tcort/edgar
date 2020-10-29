@@ -1,5 +1,5 @@
 /*
- * edgar - a small LISP Interpreter written in C
+ * edgar - an interpreter for the edgar programming language
  * Copyright (c) 2013, 2014, 2015, 2020 Thomas Cort <linuxgeek@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -54,7 +54,7 @@ static void splash(obj_t * env) {
 
 void print_help(char *progname) {
 
-	fprintf(stdout, "%s - a small LISP Interpreter written in C\n", PROJECT_NAME);
+	fprintf(stdout, "%s -  an interpreter for the edgar programming language\n", PROJECT_NAME);
 	fprintf(stdout, "\n");
 	fprintf(stdout, "Usage: %s [OPTION] [filename]\n", progname);
 	fprintf(stdout, "\n");
