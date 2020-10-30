@@ -60,7 +60,7 @@ void print_help(char *progname) {
 	fprintf(stdout, "\n");
 	fprintf(stdout, "Options:\n");
 	fprintf(stdout, " -h, -?            --help                  Print a helpful message and exit\n");
-	fprintf(stdout, " -l file.lisp      --lib file.lisp         Load a library\n");
+	fprintf(stdout, " -l file.edgar     --lib file.edgar        Load a library\n");
 	fprintf(stdout, " -v                --version               Print version information and exit\n");
 	fprintf(stdout, "\n");
 	fprintf(stdout, "Report bugs to %s\n", PROJECT_BUG_TRACKER);
