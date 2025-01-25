@@ -12,7 +12,7 @@
 
 Standard cmake build (`make test` runs the test suite):
 
-    $ cd bin
+    $ cd build
     $ cmake ..
     $ make
     $ make test
