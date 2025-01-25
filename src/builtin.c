@@ -19,7 +19,6 @@
 #include "config.h"
 
 #include <assert.h>
-#include <gmp.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
