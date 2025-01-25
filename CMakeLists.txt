@@ -33,7 +33,7 @@ include_directories(
 
 file(GLOB SOURCES "src/*.c")
 add_executable(edgar ${SOURCES})
-target_link_libraries(edgar gmp)
+target_link_libraries(edgar ${GMP_LIBRARY})
 
 install(TARGETS edgar DESTINATION bin)
 install(FILES ${PROJECT_SOURCE_DIR}/man/edgar.1 DESTINATION man/man1)
